@@ -9,7 +9,12 @@ export default function HeroSection({ avatars }: HeroSectionProps) {
   return (
     <section
       className="relative flex flex-col overflow-hidden"
-      style={{ minHeight: 860, backgroundColor: "var(--color-background)" }}
+      style={{
+        minHeight: 860,
+        marginTop: -121,
+        paddingTop: 121,
+        backgroundColor: "var(--color-background)",
+      }}
       aria-label="Hero"
     >
       {/* Background image — fills full section */}

@@ -2,7 +2,9 @@
 
 @theme inline {
   --font-boldonse: var(--font-boldonse);
+  --font-bebas-neue: var(--font-bebas-neue);
   --font-geist-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
 
   /* Background colors */
   --color-background: #070708;

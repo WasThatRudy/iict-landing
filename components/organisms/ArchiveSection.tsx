@@ -119,6 +119,17 @@ export default function ArchiveSection() {
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <PlayButton />
           </div>
+          {/* Duration badge */}
+          <div
+            className="absolute bottom-4 right-4 z-20 rounded px-2 py-0.5 text-white text-sm font-medium"
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              backgroundColor: "rgba(0,0,0,0.75)",
+              fontSize: 13,
+            }}
+          >
+            46:34
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -8,9 +8,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 const boldonse = localFont({
   src: "../public/assets/fonts/Boldonse-Regular.ttf",
   variable: "--font-boldonse",
+  display: "swap",
+  fallback: ["sans-serif"],
+});
+
+const bebasNeue = localFont({
+  src: "../public/assets/fonts/BebasNeue-Regular.ttf",
+  variable: "--font-bebas-neue",
   display: "swap",
   fallback: ["sans-serif"],
 });
@@ -34,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistMono.variable} ${boldonse.variable}`}
+      className={`${geistMono.variable} ${inter.variable} ${boldonse.variable} ${bebasNeue.variable}`}
     >
       <body className="min-h-full antialiased">{children}</body>
     </html>

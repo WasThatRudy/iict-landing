@@ -31,9 +31,6 @@ export default function HeroSection({ avatars }: HeroSectionProps) {
         />
       </div>
 
-      {/* Spacer for navbar */}
-      <div style={{ height: 76 }} />
-
       {/* Content pushed to bottom */}
       <div className="relative z-10 flex-1 flex items-end">
         <div

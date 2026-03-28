@@ -2,15 +2,7 @@ import Navbar from "@/components/organisms/Navbar";
 import HeroSection from "@/components/organisms/HeroSection";
 import ArchiveSection from "@/components/organisms/ArchiveSection";
 import TalksSection from "@/components/organisms/TalksSection";
-import { NavLink, TalkCard } from "@/types";
-
-const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Pages", href: "#", hasDropdown: true },
-  { label: "About us", href: "#about" },
-  { label: "Organisers", href: "#organisers" },
-  { label: "Speakers", href: "#speakers" },
-];
+import { TalkCard } from "@/types";
 
 const AVATARS = [
   { src: "/assets/images/avatar-1.png", alt: "IICT 2025 attendee" },
@@ -50,8 +42,8 @@ const TALKS: TalkCard[] = [
 
 export default function HomeContainer() {
   return (
-    <main className="relative" style={{ backgroundColor: "var(--color-background)" }}>
-      <Navbar links={NAV_LINKS} />
+    <main style={{ backgroundColor: "var(--color-background)" }}>
+      <Navbar />
       <HeroSection avatars={AVATARS} />
       <ArchiveSection />
       <TalksSection talks={TALKS} />

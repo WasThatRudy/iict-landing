@@ -29,10 +29,14 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);
 
-  // Hide system cursor
+  // Hide system cursor + lock scroll
   useEffect(() => {
     document.body.style.cursor = "none";
-    return () => { document.body.style.cursor = ""; };
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.cursor = "";
+      document.body.style.overflow = "";
+    };
   }, []);
 
   // Preload video while user is still on splash
@@ -105,7 +109,6 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
 
   const handleClick = useCallback(() => {
     if (phase !== "splash") return;
-    window.scrollTo({ top: 0 });
     setPhase("video");
     // Don't cancel RAF — let particles keep fading naturally
 

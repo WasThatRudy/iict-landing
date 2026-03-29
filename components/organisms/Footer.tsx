@@ -6,24 +6,6 @@ const SOCIALS = [
   { label: "Email",       href: "mailto:support@compilertech.org",                            icon: "/assets/svgs/icon-email.svg" },
 ];
 
-const NAV_COLS = [
-  {
-    heading: "IICT 2026",
-    links: [
-      { label: "Speakers", href: "#" },
-      { label: "Schedule", href: "#" },
-      { label: "Venue",    href: "#" },
-      { label: "Tickets",  href: "#" },
-    ],
-  },
-  {
-    heading: "Support",
-    links: [
-      { label: "FAQ",        href: "#" },
-      { label: "Contact Us", href: "mailto:support@compilertech.org" },
-    ],
-  },
-];
 
 export default function Footer() {
   return (
@@ -93,41 +75,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right: nav columns */}
-          <div className="flex gap-16 md:gap-24">
-            {NAV_COLS.map((col) => (
-              <div key={col.heading} className="flex flex-col gap-2">
-                <span
-                  className="mb-1"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    fontWeight: 600,
-                    fontSize: 16,
-                    color: "white",
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  {col.heading}
-                </span>
-                {col.links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    style={{
-                      fontFamily: "var(--font-geist-mono)",
-                      fontSize: 13,
-                      color: "var(--color-text-primary)",
-                      textDecoration: "none",
-                      lineHeight: 1.8,
-                    }}
-                    className="hover:text-white transition-colors duration-150"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Bottom bar */}

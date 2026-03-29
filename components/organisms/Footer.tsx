@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex items-center justify-between py-5">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 py-5">
           <span
             style={{
               fontFamily: "var(--font-geist-mono)",
@@ -112,7 +112,7 @@ export default function Footer() {
           <span
             style={{
               fontFamily: "var(--font-boldonse)",
-              fontSize: "clamp(100px, 18vw, 260px)",
+              fontSize: "clamp(60px, 18vw, 260px)",
               color: "rgba(255,255,255,0.1)",
               letterSpacing: "-0.01em",
               whiteSpace: "nowrap",

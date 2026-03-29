@@ -259,7 +259,7 @@ export default function VisionSection() {
           </div>
 
           {/* Right: stats */}
-          <div className="flex flex-row md:flex-col justify-start gap-6 md:gap-4 shrink-0">
+          <div className="flex flex-col sm:flex-row md:flex-col justify-start gap-4 shrink-0">
             {[
               { value: "200+",          label: "Participants in 2024" },
               { value: "ACM Sponsored", label: "IICT 2025"            },
@@ -271,7 +271,6 @@ export default function VisionSection() {
                 style={{
                   borderLeft: "1.5px solid rgba(78,3,255,0.5)",
                   paddingLeft: 16,
-                  minWidth: 140,
                 }}
               >
                 <span

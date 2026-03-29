@@ -189,7 +189,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                 alt="IICT"
                 width={220}
                 height={73}
-                className="object-contain"
+                className="object-contain w-[160px] md:w-[220px]"
                 priority
               />
             </motion.div>
@@ -213,9 +213,10 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                 Welcome
               </h1>
               <p
+                className="text-center px-6"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
-                  fontSize: 14,
+                  fontSize: "clamp(11px, 3vw, 14px)",
                   color: "var(--color-text-secondary)",
                   letterSpacing: "0.02em",
                 }}

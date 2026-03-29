@@ -7,6 +7,7 @@ import HeroSection, { HeroSectionHandle } from "@/components/organisms/HeroSecti
 import ArchiveSection from "@/components/organisms/ArchiveSection";
 import TalksSection from "@/components/organisms/TalksSection";
 import SplashScreen from "@/components/organisms/SplashScreen";
+import VisionSection from "@/components/organisms/VisionSection";
 import Footer from "@/components/organisms/Footer";
 import { TalkCard } from "@/types";
 
@@ -90,6 +91,7 @@ export default function HomeContainer() {
       >
         <Navbar onOpenModal={openHeroInput} />
         <HeroSection ref={heroRef} avatars={AVATARS} onOpenModal={openHeroInput} />
+        <VisionSection />
         <ArchiveSection />
         <TalksSection talks={TALKS_2025} talks2024={TALKS_2024} />
         <Footer />

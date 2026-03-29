@@ -111,7 +111,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
 
   return (
     <section
-      id="talks"
+      id="archive"
       className="py-14 md:py-20 overflow-hidden"
       style={{ backgroundColor: "var(--color-background)" }}
       aria-label="Talks from previous IICT conferences"

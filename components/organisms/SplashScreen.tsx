@@ -105,6 +105,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
 
   const handleClick = useCallback(() => {
     if (phase !== "splash") return;
+    window.scrollTo({ top: 0 });
     setPhase("video");
     // Don't cancel RAF — let particles keep fading naturally
 

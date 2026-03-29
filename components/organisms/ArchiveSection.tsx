@@ -57,7 +57,7 @@ function FloatingImage({
 export default function ArchiveSection() {
   return (
     <section
-      id="archive"
+      id="recap"
       className="relative overflow-hidden py-14 md:py-24"
       style={{ backgroundColor: "var(--color-background)" }}
       aria-label="IICT 2025 Archive"

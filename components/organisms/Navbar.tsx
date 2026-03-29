@@ -9,9 +9,10 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
-  { label: "Home", href: "#hero", active: true },
+  { label: "Home",    href: "#hero",    active: true  },
+  { label: "Vision",  href: "#vision",  active: false },
+  { label: "Recap",   href: "#recap",   active: false },
   { label: "Archive", href: "#archive", active: false },
-  { label: "Talks", href: "#talks", active: false },
 ];
 
 export default function Navbar({ onOpenModal }: NavbarProps) {

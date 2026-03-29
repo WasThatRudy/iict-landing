@@ -16,13 +16,38 @@ const AVATARS = [
   { src: "/assets/images/avatar-4.png", alt: "IICT 2025 attendee" },
 ];
 
-const TALK_CARD_BG = "/assets/images/talk-card-bg.png";
-
 const TALKS: TalkCard[] = [
-  { id: "talk-1", title: "Imagining a Next-generation Superoptimizer", watchUrl: "https://www.youtube.com/watch?v=f6a1K81L7hs&t=99s", bgImageSrc: TALK_CARD_BG },
-  { id: "talk-2", title: "Evolving the OCaml Programming Language", watchUrl: "https://www.youtube.com/watch?v=gxJJhjYJ5oo", bgImageSrc: TALK_CARD_BG },
-  { id: "talk-3", title: "Compilers @ Nvidia: Challenges, Innovations, and the Impact of AI", watchUrl: "https://www.youtube.com/watch?v=ePu8AyNiWYs", bgImageSrc: TALK_CARD_BG },
-  { id: "talk-4", title: "eld — Embedded Linker. Why another linker?", watchUrl: "https://www.youtube.com/watch?v=7-dm_iRRdZM", bgImageSrc: TALK_CARD_BG },
+  {
+    id: "talk-1",
+    title: "Imagining a Next-generation Superoptimizer",
+    watchUrl: "https://www.youtube.com/watch?v=f6a1K81L7hs&t=99s",
+    gradient: "radial-gradient(ellipse at 80% 130%, rgba(139,92,246,0.85) 0%, transparent 50%), radial-gradient(ellipse at 25% 115%, rgba(156,163,175,0.5) 0%, transparent 45%)",
+  },
+  {
+    id: "talk-2",
+    title: "Evolving the OCaml Programming Language",
+    watchUrl: "https://www.youtube.com/watch?v=gxJJhjYJ5oo",
+    gradient: "radial-gradient(ellipse at 55% 125%, rgba(249,115,22,0.85) 0%, transparent 45%), radial-gradient(ellipse at 75% 140%, rgba(236,72,153,0.75) 0%, transparent 50%)",
+  },
+  {
+    id: "talk-3",
+    title: "Compilers @ Nvidia: Challenges, Innovations, and the Impact of AI",
+    watchUrl: "https://www.youtube.com/watch?v=ePu8AyNiWYs",
+    gradient: "radial-gradient(ellipse at 20% 125%, rgba(234,88,12,0.85) 0%, transparent 45%), radial-gradient(ellipse at 65% 115%, rgba(124,58,237,0.7) 0%, transparent 50%)",
+  },
+  {
+    id: "talk-4",
+    title: "eld — Embedded Linker. Why another linker?",
+    watchUrl: "https://www.youtube.com/watch?v=7-dm_iRRdZM",
+    gradient: "radial-gradient(ellipse at 60% 125%, rgba(67,56,202,0.85) 0%, transparent 45%), radial-gradient(ellipse at 25% 130%, rgba(219,39,119,0.65) 0%, transparent 50%)",
+  },
+  {
+    id: "archive-2025",
+    title: "2025 Website Archive",
+    watchUrl: "https://2025.compilertech.org",
+    ctaLabel: "Visit",
+    gradient: "radial-gradient(ellipse at 50% 115%, rgba(78,3,255,0.6) 0%, transparent 50%), radial-gradient(ellipse at 80% 130%, rgba(107,70,193,0.45) 0%, transparent 45%)",
+  },
 ];
 
 export default function HomeContainer() {

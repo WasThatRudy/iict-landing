@@ -117,33 +117,67 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
       aria-label="Talks from previous IICT conferences"
     >
       <div className="mx-auto px-5 md:px-8" style={{ maxWidth: 1240 }}>
-        {/* Heading + scroll controls row */}
-        <div className="flex items-end justify-between gap-4 mb-8">
-          <h2
-            className="text-white"
-            style={{
-              fontFamily: "var(--font-boldonse)",
-              fontSize: "clamp(32px, 5vw, 60px)",
-              letterSpacing: "-0.02em",
-              maxWidth: 700,
-            }}
-          >
-            Check Talks From Previous IICT Conference
-          </h2>
+        {/* Heading */}
+        <h2
+          className="text-white mb-8"
+          style={{
+            fontFamily: "var(--font-boldonse)",
+            fontSize: "clamp(32px, 5vw, 60px)",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Check Talks From Previous IICT Conference
+        </h2>
+
+        {/* Year tabs + scroll nav buttons */}
+        <div className="flex items-center justify-between gap-4 mb-8">
+          <div className="flex items-center gap-6">
+            {(["2025", "2024"] as const).map((year) => {
+              const isActive = activeYear === year;
+              return (
+                <button
+                  key={year}
+                  onClick={() => setActiveYear(year)}
+                  className="flex flex-col items-start gap-1.5 pb-1"
+                  style={{ background: "none", border: "none", cursor: "pointer" }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: 15,
+                      fontWeight: 500,
+                      color: isActive ? "#4e03ff" : "rgba(255,255,255,0.4)",
+                      transition: "color 0.2s",
+                    }}
+                  >
+                    {year}
+                  </span>
+                  <div
+                    style={{
+                      height: 1.5,
+                      width: "100%",
+                      backgroundColor: isActive ? "#4e03ff" : "rgba(255,255,255,0.15)",
+                      transition: "background-color 0.2s",
+                    }}
+                  />
+                </button>
+              );
+            })}
+          </div>
 
           {/* Scroll nav buttons */}
           <div className="hidden md:flex items-center gap-2 shrink-0">
             {([
-              { label: "«", action: () => scrollTo("start"),       title: "First" },
-              { label: "‹",  action: () => scrollBy(-(CARD_WIDTH + CARD_GAP)), title: "Previous" },
-              { label: "›",  action: () => scrollBy(CARD_WIDTH + CARD_GAP),  title: "Next" },
-              { label: "»", action: () => scrollTo("end"),         title: "Last" },
+              { label: "«", action: () => scrollTo("start"),                   title: "First" },
+              { label: "‹", action: () => scrollBy(-(CARD_WIDTH + CARD_GAP)),  title: "Previous" },
+              { label: "›", action: () => scrollBy(CARD_WIDTH + CARD_GAP),     title: "Next" },
+              { label: "»", action: () => scrollTo("end"),                     title: "Last" },
             ] as const).map(({ label, action, title }) => (
               <button
                 key={title}
                 onClick={action}
                 title={title}
-                className="flex items-center justify-center rounded-full transition-colors duration-150"
+                className="flex items-center justify-center rounded-full"
                 style={{
                   width: 36,
                   height: 36,
@@ -153,6 +187,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
                   color: "rgba(255,255,255,0.6)",
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: 14,
+                  transition: "border-color 0.15s, color 0.15s",
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(78,3,255,0.7)";
@@ -167,41 +202,6 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
               </button>
             ))}
           </div>
-        </div>
-
-        {/* Year tabs */}
-        <div className="flex items-center gap-6 mb-8">
-          {(["2025", "2024"] as const).map((year) => {
-            const isActive = activeYear === year;
-            return (
-              <button
-                key={year}
-                onClick={() => setActiveYear(year)}
-                className="flex flex-col items-start gap-1.5 pb-1"
-                style={{ background: "none", border: "none", cursor: "pointer" }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    fontSize: 15,
-                    fontWeight: 500,
-                    color: isActive ? "#4e03ff" : "rgba(255,255,255,0.4)",
-                    transition: "color 0.2s",
-                  }}
-                >
-                  {year}
-                </span>
-                <div
-                  style={{
-                    height: 1.5,
-                    width: "100%",
-                    backgroundColor: isActive ? "#4e03ff" : "rgba(255,255,255,0.15)",
-                    transition: "background-color 0.2s",
-                  }}
-                />
-              </button>
-            );
-          })}
         </div>
       </div>
 

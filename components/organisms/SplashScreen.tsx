@@ -201,7 +201,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                 className="text-white text-center leading-none"
                 style={{
                   fontFamily: "var(--font-boldonse)",
-                  fontSize: "clamp(36px, 5vw, 56px)",
+                  fontSize: "clamp(32px, 6vw, 56px)",
                   letterSpacing: "-0.03em",
                   textShadow: "0 0 60px rgba(78,3,255,0.5)",
                 }}

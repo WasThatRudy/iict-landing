@@ -10,7 +10,7 @@ export default function TalkCard({ talk }: TalkCardProps) {
     <a
       href={talk.watchUrl}
       className="group relative flex flex-col justify-start overflow-hidden rounded-2xl bg-black"
-      style={{ height: 349 }}
+      style={{ height: "clamp(260px, 30vw, 349px)" }}
       aria-label={`Watch: ${talk.title}`}
     >
       {/* Colorful gradient blob background — positioned at bottom */}
@@ -96,7 +96,7 @@ export default function TalkCard({ talk }: TalkCardProps) {
           style={{
             fontFamily: "var(--font-inter)",
             fontWeight: 500,
-            fontSize: 24,
+            fontSize: "clamp(18px, 2vw, 24px)",
             maxWidth: 277,
           }}
         >

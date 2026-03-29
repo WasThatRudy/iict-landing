@@ -91,7 +91,7 @@ export default function SubscribeModal({ onClose }: SubscribeModalProps) {
 
         {/* Panel */}
         <motion.div
-          className="relative w-full max-w-[460px] rounded-2xl overflow-hidden"
+          className="relative w-full max-w-[460px] rounded-2xl overflow-hidden mx-2"
           initial={{ opacity: 0, y: 28, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -150,7 +150,7 @@ export default function SubscribeModal({ onClose }: SubscribeModalProps) {
               style={{ background: "radial-gradient(circle, rgba(78,3,255,0.12) 0%, transparent 65%)" }}
             />
 
-            <div className="relative px-10 py-11 flex flex-col gap-7">
+            <div className="relative px-6 py-8 md:px-10 md:py-11 flex flex-col gap-7">
               {/* Close */}
               <button
                 onClick={onClose}

@@ -34,22 +34,9 @@ export default function VisionSection() {
               letterSpacing: "-0.01em",
             }}
           >
-            [Vision of IICT]
+            [Vision of Innovations In Compiler Technology]
           </p>
 
-          {/* Full form */}
-          <h2
-            className="relative mb-8"
-            style={{
-              fontFamily: "var(--font-bebas-neue)",
-              fontSize: "clamp(40px, 7vw, 96px)",
-              color: "var(--color-text-primary)",
-              letterSpacing: "0.06em",
-              lineHeight: 1.1,
-            }}
-          >
-            Innovations In Compiler Technology
-          </h2>
 
           {/* Body */}
           <p
@@ -64,7 +51,7 @@ export default function VisionSection() {
               maxWidth: 860,
             }}
           >
-            The IICT (Innovations In Compiler Technology) workshop aims to bring together researchers,
+            The IICT workshop aims to bring together researchers,
             practitioners, and enthusiasts in the field of compiler technologies. This year&apos;s theme
             focuses on the cutting-edge advancements in design, implementation, and optimization of
             compiler techniques as well as their applications in emerging software and hardware platforms.

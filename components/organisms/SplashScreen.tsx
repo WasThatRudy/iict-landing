@@ -216,7 +216,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                   letterSpacing: "0.02em",
                 }}
               >
-                India&apos;s largest compiler conference
+                Compiler workshop bridging academia and industry
               </p>
             </motion.div>
 

@@ -37,57 +37,18 @@ export default function VisionSection() {
             [Vision of IICT]
           </p>
 
-          {/* Acronym breakdown */}
-          <div className="relative flex flex-col items-center gap-1 mb-10" style={{ width: "100%" }}>
-            {[
-              { letter: "I", word: "Innovations" },
-              { letter: "I", word: "In" },
-              { letter: "C", word: "Compiler" },
-              { letter: "T", word: "Technology" },
-            ].map(({ letter, word }) => (
-              <div key={word} className="flex items-baseline gap-4">
-                <span
-                  style={{
-                    fontFamily: "var(--font-boldonse)",
-                    fontSize: "clamp(36px, 6vw, 80px)",
-                    color: "var(--color-text-primary)",
-                    lineHeight: 1.1,
-                    width: "clamp(36px, 6vw, 80px)",
-                    textAlign: "right",
-                    flexShrink: 0,
-                  }}
-                >
-                  {letter}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    fontWeight: 600,
-                    fontSize: "clamp(18px, 3vw, 42px)",
-                    color: "rgba(255,255,255,0.35)",
-                    lineHeight: 1.1,
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  {word}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Heading */}
+          {/* Full form */}
           <h2
             className="relative mb-8"
             style={{
-              fontFamily: "var(--font-boldonse)",
-              fontSize: "clamp(20px, 2.5vw, 36px)",
-              color: "rgba(255,255,255,0.6)",
-              letterSpacing: "0.01em",
-              lineHeight: 1.3,
-              maxWidth: 720,
+              fontFamily: "var(--font-bebas-neue)",
+              fontSize: "clamp(40px, 7vw, 96px)",
+              color: "var(--color-text-primary)",
+              letterSpacing: "0.06em",
+              lineHeight: 1.1,
             }}
           >
-            Exploring the Future of Compiler Technology
+            Innovations In Compiler Technology
           </h2>
 
           {/* Body */}

@@ -4,13 +4,24 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { TalkCard } from "@/types";
 
+const CARD_GRADIENTS = [
+  "radial-gradient(ellipse at 80% 130%, rgba(139,92,246,0.85) 0%, transparent 50%), radial-gradient(ellipse at 25% 115%, rgba(156,163,175,0.5) 0%, transparent 45%)",
+  "radial-gradient(ellipse at 55% 125%, rgba(249,115,22,0.85) 0%, transparent 45%), radial-gradient(ellipse at 75% 140%, rgba(236,72,153,0.75) 0%, transparent 50%)",
+  "radial-gradient(ellipse at 20% 125%, rgba(234,88,12,0.85) 0%, transparent 45%), radial-gradient(ellipse at 65% 115%, rgba(124,58,237,0.7) 0%, transparent 50%)",
+  "radial-gradient(ellipse at 60% 125%, rgba(67,56,202,0.85) 0%, transparent 45%), radial-gradient(ellipse at 25% 130%, rgba(219,39,119,0.65) 0%, transparent 50%)",
+  "radial-gradient(ellipse at 40% 130%, rgba(16,185,129,0.7) 0%, transparent 45%), radial-gradient(ellipse at 75% 115%, rgba(59,130,246,0.65) 0%, transparent 50%)",
+  "radial-gradient(ellipse at 70% 120%, rgba(245,158,11,0.8) 0%, transparent 45%), radial-gradient(ellipse at 30% 135%, rgba(239,68,68,0.6) 0%, transparent 50%)",
+  "radial-gradient(ellipse at 35% 125%, rgba(168,85,247,0.8) 0%, transparent 50%), radial-gradient(ellipse at 80% 120%, rgba(20,184,166,0.55) 0%, transparent 45%)",
+];
+
 interface TalksSectionProps {
   talks: TalkCard[];
   talks2024?: TalkCard[];
 }
 
-function TalkCardItem({ talk }: { talk: TalkCard }) {
+function TalkCardItem({ talk, index }: { talk: TalkCard; index: number }) {
   const ctaLabel = talk.ctaLabel ?? "Watch";
+  const gradient = talk.gradient ?? CARD_GRADIENTS[index % CARD_GRADIENTS.length];
 
   return (
     <motion.a
@@ -24,7 +35,7 @@ function TalkCardItem({ talk }: { talk: TalkCard }) {
       {/* Gradient blob background */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: talk.gradient ?? "none" }}
+        style={{ background: gradient }}
       />
 
       {/* Content */}
@@ -153,7 +164,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
         }}
       >
         {activeTalks.length > 0 ? (
-          activeTalks.map((talk) => <TalkCardItem key={talk.id} talk={talk} />)
+          activeTalks.map((talk, i) => <TalkCardItem key={talk.id} talk={talk} index={i} />)
         ) : (
           <p
             style={{

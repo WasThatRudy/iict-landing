@@ -97,7 +97,7 @@ export default function Footer() {
               letterSpacing: "-0.02em",
             }}
           >
-            India&apos;s largest compiler conference
+            Compiler workshop bridging academia and industry
           </span>
         </div>
       </div>

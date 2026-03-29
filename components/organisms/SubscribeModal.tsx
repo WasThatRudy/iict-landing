@@ -183,7 +183,7 @@ export default function SubscribeModal({ onClose }: SubscribeModalProps) {
                   Stay Updated
                 </h2>
                 <p style={{ fontFamily: "var(--font-inter)", fontSize: 14, lineHeight: 1.7, color: "var(--color-text-secondary)" }}>
-                  Be the first to know about speakers, dates, and registration for India&apos;s largest compiler conference.
+                  Be the first to know about speakers, dates, and registration for IICT 2026.
                 </p>
               </div>
 

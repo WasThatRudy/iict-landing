@@ -178,6 +178,85 @@ export default function VisionSection() {
             )}
           </div>
         </div>
+
+        {/* About IICT */}
+        <div
+          className="flex flex-col md:flex-row gap-10 md:gap-16 mt-6"
+          style={{ padding: "0 4px" }}
+        >
+          {/* Left: text */}
+          <div className="flex flex-col gap-4 flex-1">
+            <span
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: 12,
+                color: "rgba(255,255,255,0.35)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+              }}
+            >
+              About IICT
+            </span>
+            <p
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: "clamp(13px, 1.1vw, 15px)",
+                color: "rgba(255,255,255,0.6)",
+                lineHeight: 1.8,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Innovations in Compiler Technology (IICT) is a workshop dedicated to bringing together
+              researchers, practitioners, and enthusiasts in the field of compiler technologies.
+              Our inaugural edition, IICT 2024, was met with an enthusiastic response, drawing over
+              200 participants from across the compiler community. Building on that success, we&apos;re
+              excited to announce that IICT 2025 is set to be even bigger — now an ACM-sponsored
+              event, hosted at IISc Bangalore.
+            </p>
+          </div>
+
+          {/* Right: stats */}
+          <div className="flex flex-row md:flex-col justify-start gap-6 md:gap-4 shrink-0">
+            {[
+              { value: "200+",          label: "Participants in 2024" },
+              { value: "ACM Sponsored", label: "IICT 2025"            },
+              { value: "IISc Bangalore",label: "Host institution"     },
+            ].map(({ value, label }) => (
+              <div
+                key={label}
+                className="flex flex-col gap-1"
+                style={{
+                  borderLeft: "1.5px solid rgba(78,3,255,0.5)",
+                  paddingLeft: 16,
+                  minWidth: 140,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-bebas-neue)",
+                    fontSize: "clamp(20px, 2vw, 28px)",
+                    color: "var(--color-text-primary)",
+                    letterSpacing: "0.04em",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {value}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: 11,
+                    color: "rgba(255,255,255,0.35)",
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

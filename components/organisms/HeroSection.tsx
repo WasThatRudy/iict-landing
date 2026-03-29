@@ -63,6 +63,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
 
   return (
     <section
+      id="hero"
       className="relative flex flex-col overflow-hidden"
       style={{
         minHeight: "calc(100svh - 80px)",

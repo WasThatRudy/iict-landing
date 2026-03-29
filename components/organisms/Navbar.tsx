@@ -9,7 +9,7 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
-  { label: "Home", href: "/", active: true },
+  { label: "Home", href: "#hero", active: true },
   { label: "Archive", href: "#archive", active: false },
   { label: "Talks", href: "#talks", active: false },
 ];

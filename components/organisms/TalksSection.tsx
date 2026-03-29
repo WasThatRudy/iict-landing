@@ -100,6 +100,11 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
   const scrollRef = useRef<HTMLDivElement>(null);
   const activeTalks = activeYear === "2025" ? talks : talks2024;
 
+  function switchYear(year: "2025" | "2024") {
+    setActiveYear(year);
+    scrollRef.current?.scrollTo({ left: 0 });
+  }
+
   function scrollBy(delta: number) {
     scrollRef.current?.scrollBy({ left: delta, behavior: "smooth" });
   }
@@ -138,7 +143,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
               return (
                 <button
                   key={year}
-                  onClick={() => setActiveYear(year)}
+                  onClick={() => switchYear(year)}
                   className="flex flex-col items-start gap-1.5 pb-1"
                   style={{ background: "none", border: "none", cursor: "pointer" }}
                 >

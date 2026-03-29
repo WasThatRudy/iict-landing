@@ -36,6 +36,20 @@ export const metadata: Metadata = {
     title: "IICT 2026",
     description: "India's Inclusive Computing Conference — Coming Soon, Bengaluru",
     type: "website",
+    images: [
+      {
+        url: "/assets/images/og-image.png",
+        width: 2923,
+        height: 1749,
+        alt: "IICT 2026 — Compiler workshop bridging academia and industry",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IICT 2026",
+    description: "India's Inclusive Computing Conference — Coming Soon, Bengaluru",
+    images: ["/assets/images/og-image.png"],
   },
 };
 

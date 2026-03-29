@@ -12,8 +12,6 @@ const NAV_LINKS = [
   { label: "Home", href: "/", active: true },
   { label: "Archive", href: "#archive", active: false },
   { label: "Talks", href: "#talks", active: false },
-  { label: "About", href: "#about", active: false },
-  { label: "Speakers", href: "#speakers", active: false },
 ];
 
 export default function Navbar({ onOpenModal }: NavbarProps) {

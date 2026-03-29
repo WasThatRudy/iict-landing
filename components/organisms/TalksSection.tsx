@@ -10,6 +10,7 @@ export default function TalksSection({ talks }: TalksSectionProps) {
 
   return (
     <section
+      id="talks"
       className="py-20"
       style={{ backgroundColor: "var(--color-background)" }}
       aria-label="Talks from IICT 2025"

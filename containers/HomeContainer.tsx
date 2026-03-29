@@ -1,7 +1,13 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/organisms/Navbar";
 import HeroSection from "@/components/organisms/HeroSection";
 import ArchiveSection from "@/components/organisms/ArchiveSection";
 import TalksSection from "@/components/organisms/TalksSection";
+import SubscribeModal from "@/components/organisms/SubscribeModal";
+import SplashScreen from "@/components/organisms/SplashScreen";
 import { TalkCard } from "@/types";
 
 const AVATARS = [
@@ -41,12 +47,35 @@ const TALKS: TalkCard[] = [
 ];
 
 export default function HomeContainer() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
+
   return (
-    <main style={{ backgroundColor: "var(--color-background)" }}>
-      <Navbar />
-      <HeroSection avatars={AVATARS} />
-      <ArchiveSection />
-      <TalksSection talks={TALKS} />
-    </main>
+    <>
+      {/* Landing page — always mounted, fades in after splash */}
+      <motion.main
+        style={{ backgroundColor: "var(--color-background)" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: videoStarted || splashDone ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        <Navbar onOpenModal={() => setModalOpen(true)} />
+        <HeroSection avatars={AVATARS} onOpenModal={() => setModalOpen(true)} />
+        <ArchiveSection />
+        <TalksSection talks={TALKS} />
+        {modalOpen && <SubscribeModal onClose={() => setModalOpen(false)} />}
+      </motion.main>
+
+      {/* Splash — unmounts after transition */}
+      <AnimatePresence>
+        {!splashDone && (
+          <SplashScreen
+            onVideoStart={() => setVideoStarted(true)}
+            onDone={() => setSplashDone(true)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }

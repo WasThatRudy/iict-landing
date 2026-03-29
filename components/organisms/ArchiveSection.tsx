@@ -1,59 +1,116 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const YOUTUBE_VIDEO_ID = "l61dY6O0A5s";
+
+interface FloatingImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  floatDuration: number;
+  floatDelay: number;
+  floatDistance: number;
+  className?: string;
+}
+
+function FloatingImage({
+  src,
+  alt,
+  width,
+  height,
+  floatDuration,
+  floatDelay,
+  floatDistance,
+  className = "",
+}: FloatingImageProps) {
+  return (
+    <motion.div
+      animate={{ y: [0, -floatDistance, 0] }}
+      transition={{
+        y: { duration: floatDuration, delay: floatDelay, repeat: Infinity, ease: "easeInOut" },
+        scale: { duration: 0.12, ease: "easeOut" },
+      }}
+      whileHover={{ scale: 1.5, zIndex: 20 }}
+      className={`rounded-xl overflow-hidden ${className}`}
+      style={{
+        width,
+        height,
+        border: "1px solid rgba(250,250,250,0.08)",
+        transformOrigin: "center center",
+      }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="object-cover w-full h-full pointer-events-none"
+        draggable={false}
+      />
+    </motion.div>
+  );
+}
 
 export default function ArchiveSection() {
   return (
     <section
+      id="archive"
       className="relative overflow-hidden py-24"
       style={{ backgroundColor: "var(--color-background)" }}
       aria-label="IICT 2025 Archive"
     >
-      {/* Decorative corner images — top-left */}
-      <div className="absolute left-10 top-10 hidden xl:block">
-        <Image
+      {/* Top-left */}
+      <div className="absolute left-[7%] top-16 hidden xl:block">
+        <FloatingImage
           src="/assets/images/img-keynote.png"
           alt="IICT 2025 keynote"
           width={156}
           height={187}
-          className="rounded-lg object-cover"
-          style={{ border: "1px solid rgba(250,250,250,0.05)" }}
+          floatDuration={4.2}
+          floatDelay={0}
+          floatDistance={12}
         />
       </div>
 
-      {/* Decorative corner images — top-right */}
-      <div className="absolute right-10 top-10 hidden xl:block">
-        <Image
+      {/* Top-right */}
+      <div className="absolute right-[7%] top-16 hidden xl:block">
+        <FloatingImage
           src="/assets/images/img-attendees.png"
           alt="IICT 2025 attendees"
           width={102}
           height={122}
-          className="rounded-lg object-cover"
-          style={{ border: "1px solid rgba(250,250,250,0.05)" }}
+          floatDuration={3.8}
+          floatDelay={0.7}
+          floatDistance={9}
         />
       </div>
 
-      {/* Decorative corner images — bottom-left */}
-      <div className="absolute bottom-10 left-10 hidden xl:block">
-        <Image
+      {/* Bottom-left */}
+      <div className="absolute bottom-16 left-[7%] hidden xl:block">
+        <FloatingImage
           src="/assets/images/img-talk-screen.png"
           alt="IICT 2025 talk presentation"
           width={130}
           height={115}
-          className="rounded-lg object-cover"
-          style={{ border: "1px solid rgba(250,250,250,0.05)" }}
+          floatDuration={5.1}
+          floatDelay={1.4}
+          floatDistance={14}
         />
       </div>
 
-      {/* Decorative corner images — bottom-right */}
-      <div className="absolute bottom-10 right-10 hidden xl:block">
-        <Image
+      {/* Bottom-right */}
+      <div className="absolute bottom-16 right-[7%] hidden xl:block">
+        <FloatingImage
           src="/assets/images/img-speaker-mic.png"
           alt="IICT 2025 speaker"
           width={114}
           height={169}
-          className="rounded-lg object-cover"
-          style={{ border: "1px solid rgba(250,250,250,0.05)" }}
+          floatDuration={4.6}
+          floatDelay={0.3}
+          floatDistance={10}
         />
       </div>
 

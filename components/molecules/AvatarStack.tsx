@@ -24,6 +24,7 @@ export default function AvatarStack({ avatars, label }: AvatarStackProps) {
               src={avatar.src}
               alt={avatar.alt}
               fill
+              sizes="30px"
               className="object-cover"
             />
           </div>

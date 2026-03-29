@@ -1,16 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+interface NavbarProps {
+  onOpenModal: () => void;
+}
 
 const NAV_LINKS = [
-  { label: "Home", href: "/", active: true, hasDropdown: false },
-  { label: "Pages", href: "#", active: false, hasDropdown: true },
-  { label: "About us", href: "#about", active: false, hasDropdown: false },
-  { label: "Organisers", href: "#organisers", active: false, hasDropdown: false },
-  { label: "Speakers", href: "#speakers", active: false, hasDropdown: false },
+  { label: "Home", href: "/", active: true },
+  { label: "Archive", href: "#archive", active: false },
+  { label: "Talks", href: "#talks", active: false },
+  { label: "About", href: "#about", active: false },
+  { label: "Speakers", href: "#speakers", active: false },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenModal }: NavbarProps) {
   return (
     <header
       className="sticky top-0 z-50 overflow-hidden"
@@ -22,26 +27,28 @@ export default function Navbar() {
     >
       <nav
         className="mx-auto flex items-center justify-between"
-        style={{
-          maxWidth: 1240,
-          height: 121,
-          paddingLeft: 40,
-          paddingRight: 40,
-        }}
+        style={{ maxWidth: 1240, height: 121, paddingLeft: 40, paddingRight: 40 }}
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <a href="/" aria-label="IICT Home" className="shrink-0">
+        <motion.a
+          href="/"
+          aria-label="IICT Home"
+          className="shrink-0"
+          whileHover={{ opacity: 0.75 }}
+          transition={{ duration: 0.15 }}
+        >
           <div style={{ width: 178, height: 59, position: "relative" }}>
             <Image
               src="/assets/svgs/logo.png"
               alt="IICT Logo"
               fill
+              sizes="178px"
               className="object-contain object-left"
               priority
             />
           </div>
-        </a>
+        </motion.a>
 
         {/* Nav links pill */}
         <div
@@ -55,57 +62,39 @@ export default function Navbar() {
           }}
         >
           {NAV_LINKS.map((link) => (
-            <a
+            <motion.a
               key={link.label}
               href={link.href}
-              className="flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-white"
+              className="flex items-center gap-1.5 whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-bebas-neue)",
                 fontSize: 14,
                 letterSpacing: "0.14em",
                 color: link.active ? "#ffffff" : "rgba(255,255,255,0.5)",
               }}
+              whileHover={{ color: "#ffffff", y: -1 }}
+              transition={{ duration: 0.15 }}
             >
               {link.label}
-              {link.hasDropdown && (
-                <Image
-                  src="/assets/svgs/icon-chevron-down.svg"
-                  alt=""
-                  width={14}
-                  height={14}
-                />
-              )}
-            </a>
+            </motion.a>
           ))}
         </div>
 
-        {/* Contact Us — gradient border button */}
-        <a
-          href="#contact"
-          className="hidden md:block relative shrink-0 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-cyan-400"
+        {/* Get Updates CTA */}
+        <motion.button
+          onClick={onOpenModal}
+          className="hidden md:block shrink-0 rounded-[4px] px-6 py-2.5 text-white focus:outline-none"
           style={{
-            padding: 1,
-            background:
-              "linear-gradient(105.87deg, #00ffff 0%, #00ed97 33.2%, #00aa6c 65.7%, #ffa467 100%)",
+            fontFamily: "var(--font-bebas-neue)",
+            fontSize: 15,
+            letterSpacing: "0.14em",
+            border: "1px solid rgba(255,255,255,0.2)",
           }}
-          aria-label="Contact Us"
+          whileHover={{ borderColor: "rgba(255,255,255,0.7)", color: "#ffffff", scale: 1.03 }}
+          transition={{ duration: 0.15 }}
         >
-          <div
-            className="flex items-center justify-center rounded-[3px] px-8 py-[15px]"
-            style={{ backgroundColor: "#000000" }}
-          >
-            <span
-              className="text-white whitespace-nowrap"
-              style={{
-                fontFamily: "var(--font-bebas-neue)",
-                fontSize: 16,
-                letterSpacing: "0.14em",
-              }}
-            >
-              Contact Us
-            </span>
-          </div>
-        </a>
+          Get Updates
+        </motion.button>
       </nav>
     </header>
   );

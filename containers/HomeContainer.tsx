@@ -38,7 +38,7 @@ const TALKS_2025: TalkCard[] = [
   { id: "2025-19", title: "VASCO for Bidirectional Analysis",                                                  watchUrl: "https://www.youtube.com/watch?v=ApCp1VjyVzg" },
   { id: "2025-20", title: "PyDRA — Pythonic DSL for RAN",                                                      watchUrl: "https://www.youtube.com/watch?v=V66RHQMcepk" },
   { id: "2025-21", title: "Optimized GHASH Intrinsic for OpenJDK on PowerPC",                                  watchUrl: "https://www.youtube.com/watch?v=X0procUJw_8" },
-  { id: "archive-2025", title: "2025 Website Archive", watchUrl: "https://2025.compilertech.org", ctaLabel: "Visit" },
+  { id: "archive-2025", title: "2025 Website Archive", watchUrl: "https://compilertech.org/2025", ctaLabel: "Visit" },
 ];
 
 const TALKS_2024: TalkCard[] = [
@@ -66,6 +66,7 @@ const TALKS_2024: TalkCard[] = [
   { id: "2024-22", title: "Towards Higher First Silicon Success via Improved FSM Detection",                   watchUrl: "https://www.youtube.com/watch?v=taPgiRXyrvo" },
   { id: "2024-23", title: "No-ISA is the Best ISA",                                                           watchUrl: "https://www.youtube.com/watch?v=G4fxdHozm5I" },
   { id: "2024-24", title: "STGraph: A Framework for Temporal Graph Neural Networks",                           watchUrl: "https://www.youtube.com/watch?v=X6GBpO07yHs" },
+  { id: "archive-2024", title: "2024 Website Archive", watchUrl: "https://compilertech.org/2024", ctaLabel: "Visit" },
 ];
 
 export default function HomeContainer() {

@@ -4,3 +4,27 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/2025"
+  to = "https://2025.compilertech.org"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2025/*"
+  to = "https://2025.compilertech.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2024"
+  to = "https://2025.compilertech.org/2024"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2024/*"
+  to = "https://2025.compilertech.org/2024/:splat"
+  status = 301
+  force = true

@@ -124,6 +124,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
             fontFamily: "var(--font-boldonse)",
             fontSize: "clamp(28px, 3.5vw, 44px)",
             letterSpacing: "-0.02em",
+            lineHeight: 1.5,
           }}
         >
           Check Talks From Previous<br />IICT Conference

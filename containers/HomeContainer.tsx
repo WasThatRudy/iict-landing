@@ -7,6 +7,7 @@ import HeroSection, { HeroSectionHandle } from "@/components/organisms/HeroSecti
 import ArchiveSection from "@/components/organisms/ArchiveSection";
 import TalksSection from "@/components/organisms/TalksSection";
 import SplashScreen from "@/components/organisms/SplashScreen";
+import Footer from "@/components/organisms/Footer";
 import { TalkCard } from "@/types";
 
 const AVATARS = [
@@ -91,6 +92,7 @@ export default function HomeContainer() {
         <HeroSection ref={heroRef} avatars={AVATARS} onOpenModal={openHeroInput} />
         <ArchiveSection />
         <TalksSection talks={TALKS_2025} talks2024={TALKS_2024} />
+        <Footer />
       </motion.main>
 
       <AnimatePresence>

@@ -60,7 +60,7 @@ export default function ArchiveSection() {
       id="archive"
       className="relative overflow-hidden py-14 md:py-24"
       style={{ backgroundColor: "var(--color-background)" }}
-      aria-label="IICT 2026 Archive"
+      aria-label="IICT 2025 Archive"
     >
       {/* Top-left */}
       <div className="absolute left-[7%] top-16 hidden xl:block">
@@ -136,7 +136,7 @@ export default function ArchiveSection() {
               lineHeight: 1.45,
             }}
           >
-            Revisit the Energy of IICT 2026
+            Revisit the Energy of IICT 2025
           </h2>
           <p
             className="text-[var(--color-text-secondary)] text-center"
@@ -150,7 +150,7 @@ export default function ArchiveSection() {
             }}
           >
             Talks that sparked ideas. Conversations that built community. Relive
-            the moments that made IICT 2026 a compiler workshop like no other.
+            the moments that made IICT 2025 a compiler workshop like no other.
           </p>
         </div>
 

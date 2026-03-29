@@ -122,7 +122,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
           className="text-white mb-8"
           style={{
             fontFamily: "var(--font-boldonse)",
-            fontSize: "clamp(32px, 5vw, 60px)",
+            fontSize: "clamp(28px, 3.5vw, 44px)",
             letterSpacing: "-0.02em",
           }}
         >

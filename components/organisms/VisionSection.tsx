@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 
 const HEADING_WORDS = ["Innovations", "In", "Compiler", "Technology"];
 
@@ -11,10 +11,33 @@ export default function VisionSection() {
   const cardRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const bodyRef = useRef<HTMLParagraphElement>(null);
+  // Cached resting bounding boxes — measured before any transform is applied
+  const wordRects = useRef<{ left: number; right: number; top: number; bottom: number }[]>([]);
 
   const [spotlight, setSpotlight] = useState<{ x: number; y: number } | null>(null);
   const [wordProximities, setWordProximities] = useState<number[]>(HEADING_WORDS.map(() => 0));
   const [bodyCursor, setBodyCursor] = useState<{ x: number; y: number } | null>(null);
+
+  // Measure word centres once at rest, and again on resize
+  useLayoutEffect(() => {
+    function measure() {
+      const cardRect = cardRef.current?.getBoundingClientRect();
+      if (!cardRect) return;
+      wordRects.current = wordRefs.current.map((el) => {
+        if (!el) return { left: 0, right: 0, top: 0, bottom: 0 };
+        const r = el.getBoundingClientRect();
+        return {
+          left:   r.left   - cardRect.left,
+          right:  r.right  - cardRect.left,
+          top:    r.top    - cardRect.top,
+          bottom: r.bottom - cardRect.top,
+        };
+      });
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const cardRect = cardRef.current?.getBoundingClientRect();
@@ -23,22 +46,18 @@ export default function VisionSection() {
     const cx = e.clientX - cardRect.left;
     const cy = e.clientY - cardRect.top;
 
-    // Spotlight % for background glow
     setSpotlight({ x: (cx / cardRect.width) * 100, y: (cy / cardRect.height) * 100 });
 
-    // Heading: real distance from each word's centre
+    // Distance-to-rect: 0 inside the word, falls off from nearest edge
     setWordProximities(
-      wordRefs.current.map((el) => {
-        if (!el) return 0;
-        const r = el.getBoundingClientRect();
-        const wx = r.left - cardRect.left + r.width / 2;
-        const wy = r.top  - cardRect.top  + r.height / 2;
-        const dist = Math.sqrt((cx - wx) ** 2 + (cy - wy) ** 2);
-        return Math.max(0, 1 - dist / 130);
+      wordRects.current.map((r) => {
+        const dx = Math.max(r.left - cx, 0, cx - r.right);
+        const dy = Math.max(r.top  - cy, 0, cy - r.bottom);
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        return Math.max(0, 1 - dist / 60);
       })
     );
 
-    // Body: cursor relative to the paragraph element
     const bodyRect = bodyRef.current?.getBoundingClientRect();
     if (bodyRect) {
       setBodyCursor({
@@ -120,6 +139,15 @@ export default function VisionSection() {
           >
             {HEADING_WORDS.map((word, i) => {
               const p = wordProximities[i] ?? 0;
+              const initial = word[0];
+              const rest = word.slice(1);
+              // Initial: same as rest at rest, purple-tinted white + glow on hover
+              const initialColor = p > 0.01
+                ? `rgba(${Math.round(180 + p * 75)},${Math.round(130 + p * 125)},255,${0.7 + p * 0.3})`
+                : `rgba(255,255,255,0.55)`;
+              const initialShadow = p > 0.01
+                ? `0 0 ${10 + p * 22}px rgba(160,100,255,${p * 0.9})`
+                : "none";
               return (
                 <span
                   key={word}
@@ -127,12 +155,27 @@ export default function VisionSection() {
                   style={{
                     display: "inline-block",
                     transform: `translateY(${-p * 8}px) scale(${1 + p * 0.04})`,
-                    color: `rgba(255,255,255,${0.55 + p * 0.45})`,
-                    transition: "transform 0.15s ease, color 0.15s ease",
+                    transition: "transform 0.15s ease",
                     marginRight: "0.22em",
                   }}
                 >
-                  {word}
+                  <span
+                    style={{
+                      color: initialColor,
+                      textShadow: initialShadow,
+                      transition: "color 0.15s ease, text-shadow 0.15s ease",
+                    }}
+                  >
+                    {initial}
+                  </span>
+                  <span
+                    style={{
+                      color: `rgba(255,255,255,${0.45 + p * 0.45})`,
+                      transition: "color 0.15s ease",
+                    }}
+                  >
+                    {rest}
+                  </span>
                 </span>
               );
             })}

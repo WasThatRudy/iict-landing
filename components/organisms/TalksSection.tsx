@@ -122,9 +122,9 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
           className="text-white mb-8"
           style={{
             fontFamily: "var(--font-boldonse)",
-            fontSize: "clamp(28px, 3.5vw, 44px)",
+            fontSize: "clamp(22px, 3.5vw, 44px)",
             letterSpacing: "-0.02em",
-            lineHeight: 1.5,
+            lineHeight: 1.6,
           }}
         >
           Check Talks From Previous<br />IICT Conference
@@ -220,6 +220,26 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
           </p>
         )}
         <div className="shrink-0 w-1" />
+      </div>
+
+      {/* Swipe hint — mobile only, fades out */}
+      <div
+        className="flex md:hidden items-center justify-center gap-2 mt-4"
+        style={{ pointerEvents: "none" }}
+      >
+        <motion.span
+          animate={{ x: [0, 6, 0] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            fontSize: 11,
+            color: "rgba(255,255,255,0.35)",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+          }}
+        >
+          swipe to explore →
+        </motion.span>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { TalkCard } from "@/types";
 
@@ -92,9 +92,22 @@ function TalkCardItem({ talk, index }: { talk: TalkCard; index: number }) {
   );
 }
 
+const CARD_WIDTH = 360;
+const CARD_GAP = 28; // gap-7 = 1.75rem ≈ 28px
+
 export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProps) {
   const [activeYear, setActiveYear] = useState<"2025" | "2024">("2025");
+  const scrollRef = useRef<HTMLDivElement>(null);
   const activeTalks = activeYear === "2025" ? talks : talks2024;
+
+  function scrollBy(delta: number) {
+    scrollRef.current?.scrollBy({ left: delta, behavior: "smooth" });
+  }
+  function scrollTo(pos: "start" | "end") {
+    if (!scrollRef.current) return;
+    const el = scrollRef.current;
+    el.scrollTo({ left: pos === "start" ? 0 : el.scrollWidth, behavior: "smooth" });
+  }
 
   return (
     <section
@@ -104,19 +117,57 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
       aria-label="Talks from previous IICT conferences"
     >
       <div className="mx-auto px-5 md:px-8" style={{ maxWidth: 1240 }}>
-        {/* Heading */}
-        <h2
-          className="text-white mb-8"
-          style={{
-            fontFamily: "var(--font-boldonse)",
-            fontSize: "clamp(32px, 5vw, 60px)",
-            letterSpacing: "-0.02em",
-            lineHeight: 1.1,
-            maxWidth: 700,
-          }}
-        >
-          Check Talks From Previous IICT Conference
-        </h2>
+        {/* Heading + scroll controls row */}
+        <div className="flex items-end justify-between gap-4 mb-8">
+          <h2
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-boldonse)",
+              fontSize: "clamp(32px, 5vw, 60px)",
+              letterSpacing: "-0.02em",
+              maxWidth: 700,
+            }}
+          >
+            Check Talks From Previous IICT Conference
+          </h2>
+
+          {/* Scroll nav buttons */}
+          <div className="hidden md:flex items-center gap-2 shrink-0">
+            {([
+              { label: "«", action: () => scrollTo("start"),       title: "First" },
+              { label: "‹",  action: () => scrollBy(-(CARD_WIDTH + CARD_GAP)), title: "Previous" },
+              { label: "›",  action: () => scrollBy(CARD_WIDTH + CARD_GAP),  title: "Next" },
+              { label: "»", action: () => scrollTo("end"),         title: "Last" },
+            ] as const).map(({ label, action, title }) => (
+              <button
+                key={title}
+                onClick={action}
+                title={title}
+                className="flex items-center justify-center rounded-full transition-colors duration-150"
+                style={{
+                  width: 36,
+                  height: 36,
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  background: "none",
+                  cursor: "pointer",
+                  color: "rgba(255,255,255,0.6)",
+                  fontFamily: "var(--font-geist-mono)",
+                  fontSize: 14,
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(78,3,255,0.7)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)";
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Year tabs */}
         <div className="flex items-center gap-6 mb-8">
@@ -154,30 +205,19 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
         </div>
       </div>
 
-      {/* Horizontally scrollable cards — bleeds to edges */}
+      {/* Horizontally scrollable cards */}
       <div
+        ref={scrollRef}
         className="flex gap-7 overflow-x-auto px-5 md:px-8"
-        style={{
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-          paddingBottom: 4,
-        }}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingBottom: 4 }}
       >
         {activeTalks.length > 0 ? (
           activeTalks.map((talk, i) => <TalkCardItem key={talk.id} talk={talk} index={i} />)
         ) : (
-          <p
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontSize: 14,
-              color: "rgba(255,255,255,0.3)",
-              paddingLeft: 4,
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-geist-mono)", fontSize: 14, color: "rgba(255,255,255,0.3)", paddingLeft: 4 }}>
             No talks available yet.
           </p>
         )}
-        {/* Trailing spacer so last card doesn't sit flush on wide screens */}
         <div className="shrink-0 w-1" />
       </div>
     </section>

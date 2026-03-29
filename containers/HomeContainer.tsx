@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/organisms/Navbar";
-import HeroSection from "@/components/organisms/HeroSection";
+import HeroSection, { HeroSectionHandle } from "@/components/organisms/HeroSection";
 import ArchiveSection from "@/components/organisms/ArchiveSection";
 import TalksSection from "@/components/organisms/TalksSection";
 import SplashScreen from "@/components/organisms/SplashScreen";
@@ -25,17 +25,15 @@ const TALKS: TalkCard[] = [
   { id: "talk-4", title: "talk name Ullamco pariatur sit culpa enim cupidatat", watchUrl: "#talk-4", bgImageSrc: TALK_CARD_BG },
 ];
 
-function scrollToHeroInput() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  // After scroll, dispatch a custom event that HeroSection listens to
-  setTimeout(() => {
-    window.dispatchEvent(new CustomEvent("focus-hero-input"));
-  }, 400);
-}
-
 export default function HomeContainer() {
   const [splashDone, setSplashDone] = useState(false);
   const [videoStarted, setVideoStarted] = useState(false);
+  const heroRef = useRef<HeroSectionHandle>(null);
+
+  function openHeroInput() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => heroRef.current?.openInput(), 400);
+  }
 
   return (
     <>
@@ -45,8 +43,8 @@ export default function HomeContainer() {
         animate={{ opacity: videoStarted || splashDone ? 1 : 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <Navbar onOpenModal={scrollToHeroInput} />
-        <HeroSection avatars={AVATARS} onOpenModal={scrollToHeroInput} />
+        <Navbar onOpenModal={openHeroInput} />
+        <HeroSection ref={heroRef} avatars={AVATARS} onOpenModal={openHeroInput} />
         <ArchiveSection />
         <TalksSection talks={TALKS} />
       </motion.main>

@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useImperativeHandle, forwardRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+export interface HeroSectionHandle {
+  openInput: () => void;
+}
 
 interface HeroSectionProps {
   avatars: { src: string; alt: string }[];
@@ -11,10 +15,11 @@ interface HeroSectionProps {
 
 type InputState = "idle" | "open" | "loading" | "success" | "error";
 
-export default function HeroSection({ avatars, onOpenModal }: HeroSectionProps) {
+const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function HeroSection({ avatars, onOpenModal }, ref) {
   const [inputState, setInputState] = useState<InputState>("idle");
   const [email, setEmail] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [highlighted, setHighlighted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleButtonClick() {
@@ -22,15 +27,14 @@ export default function HeroSection({ avatars, onOpenModal }: HeroSectionProps) 
     setTimeout(() => inputRef.current?.focus(), 200);
   }
 
-  // Navbar "Get Updates" scrolls to top then fires this event
-  useEffect(() => {
-    const handler = () => {
-      setInputState((s) => (s === "idle" ? "open" : s));
-      setTimeout(() => inputRef.current?.focus(), 100);
-    };
-    window.addEventListener("focus-hero-input", handler);
-    return () => window.removeEventListener("focus-hero-input", handler);
+  const openInputHighlighted = useCallback(() => {
+    setInputState((s) => (s === "idle" ? "open" : s));
+    setHighlighted(true);
+    setTimeout(() => inputRef.current?.focus(), 200);
+    setTimeout(() => setHighlighted(false), 2200);
   }, []);
+
+  useImperativeHandle(ref, () => ({ openInput: openInputHighlighted }));
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -135,97 +139,134 @@ export default function HeroSection({ avatars, onOpenModal }: HeroSectionProps) 
 
             {/* Morphing CTA */}
             <div className="flex flex-col items-start gap-2">
-              <AnimatePresence mode="wait">
-                {inputState === "idle" && (
-                  <motion.button
-                    key="btn"
-                    onClick={handleButtonClick}
-                    className="flex items-center overflow-hidden rounded-full focus:outline-none"
-                    style={{ backgroundColor: "var(--color-primary)" }}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.15 }}
-                    whileHover={{ boxShadow: "0 0 24px rgba(78,3,255,0.6)", scale: 1.03 }}
-                    layout
-                  >
-                    <span
-                      className="flex items-center justify-center rounded-full shrink-0"
-                      style={{ width: 42, height: 42, backgroundColor: "var(--color-primary)" }}
-                    >
-                      <Image src="/assets/svgs/icon-arrow.svg" alt="" width={18} height={18} />
-                    </span>
-                    <span className="pr-5 text-white" style={{ fontFamily: "var(--font-geist-mono)", fontWeight: 500, fontSize: 14 }}>
-                      Sign Up for Updates
-                    </span>
-                  </motion.button>
-                )}
+              {/* Row: animated arrow (when highlighted) + morphing input/button */}
+              <div className="flex items-center gap-3">
 
-                {inputState === "success" && (
-                  <motion.div
-                    key="success"
-                    className="flex items-center gap-3 rounded-full px-5"
-                    style={{ height: 42, backgroundColor: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.3)" }}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12l5 5L19 7" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: 13, color: "#22c55e" }}>
-                      You&apos;re on the list.
-                    </span>
-                  </motion.div>
-                )}
-
-                {(inputState === "open" || inputState === "loading" || inputState === "error") && (
-                  <motion.form
-                    key="form"
-                    onSubmit={handleSubmit}
-                    className="flex items-center overflow-hidden rounded-full"
-                    style={{
-                      border: inputState === "error"
-                        ? "1px solid rgba(255,80,80,0.5)"
-                        : "1px solid rgba(78,3,255,0.5)",
-                      backgroundColor: "rgba(7,7,8,0.7)",
-                      backdropFilter: "blur(8px)",
-                    }}
-                    initial={{ opacity: 0, width: 42 }}
-                    animate={{ opacity: 1, width: "auto" }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <input
-                      ref={inputRef}
-                      type="email"
-                      required
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => { setEmail(e.target.value); if (inputState === "error") setInputState("open"); }}
-                      className="bg-transparent text-white placeholder:text-white/30 outline-none pl-5 pr-2"
-                      style={{ fontFamily: "var(--font-geist-mono)", fontSize: 13, width: "clamp(180px, 22vw, 260px)", height: 42 }}
-                    />
-                    <motion.button
-                      type="submit"
-                      disabled={inputState === "loading"}
-                      className="flex items-center justify-center rounded-full shrink-0 m-1 disabled:opacity-50"
-                      style={{ width: 34, height: 34, backgroundColor: "var(--color-primary)" }}
-                      whileHover={{ scale: 1.08 }}
-                      transition={{ duration: 0.12 }}
+                {/* Arrow label — slides in from left when triggered from navbar */}
+                <AnimatePresence>
+                  {highlighted && (
+                    <motion.div
+                      className="flex items-center gap-1.5 pointer-events-none"
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -8 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      {inputState === "loading" ? (
-                        <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none">
-                          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" strokeWidth="3"/>
-                          <path d="M12 2a10 10 0 0 1 10 10" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                      <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: 11, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
+                        type here
+                      </span>
+                      <motion.svg
+                        width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 0.65, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="#4e03ff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </motion.svg>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Glow wrapper — pulses when highlighted */}
+                <motion.div
+                  animate={highlighted
+                    ? { boxShadow: ["0 0 0px rgba(78,3,255,0)", "0 0 20px rgba(78,3,255,0.65)", "0 0 0px rgba(78,3,255,0)"] }
+                    : { boxShadow: "0 0 0px rgba(78,3,255,0)" }}
+                  transition={highlighted ? { duration: 0.9, repeat: 2, ease: "easeInOut" } : { duration: 0.3 }}
+                  style={{ borderRadius: 999 }}
+                >
+                  <AnimatePresence mode="wait">
+                    {inputState === "idle" && (
+                      <motion.button
+                        key="btn"
+                        onClick={handleButtonClick}
+                        className="flex items-center overflow-hidden rounded-full focus:outline-none"
+                        style={{ backgroundColor: "var(--color-primary)" }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.15 }}
+                        whileHover={{ boxShadow: "0 0 24px rgba(78,3,255,0.6)", scale: 1.03 }}
+                        layout
+                      >
+                        <span
+                          className="flex items-center justify-center rounded-full shrink-0"
+                          style={{ width: 42, height: 42, backgroundColor: "var(--color-primary)" }}
+                        >
+                          <Image src="/assets/svgs/icon-arrow.svg" alt="" width={18} height={18} />
+                        </span>
+                        <span className="pr-5 text-white" style={{ fontFamily: "var(--font-geist-mono)", fontWeight: 500, fontSize: 14 }}>
+                          Sign Up for Updates
+                        </span>
+                      </motion.button>
+                    )}
+
+                    {inputState === "success" && (
+                      <motion.div
+                        key="success"
+                        className="flex items-center gap-3 rounded-full px-5"
+                        style={{ height: 42, backgroundColor: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.3)" }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <path d="M5 12l5 5L19 7" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                      ) : (
-                        <Image src="/assets/svgs/icon-arrow.svg" alt="Submit" width={14} height={14} />
-                      )}
-                    </motion.button>
-                  </motion.form>
-                )}
-              </AnimatePresence>
+                        <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: 13, color: "#22c55e" }}>
+                          You&apos;re on the list.
+                        </span>
+                      </motion.div>
+                    )}
+
+                    {(inputState === "open" || inputState === "loading" || inputState === "error") && (
+                      <motion.form
+                        key="form"
+                        onSubmit={handleSubmit}
+                        className="flex items-center overflow-hidden rounded-full"
+                        style={{
+                          border: inputState === "error"
+                            ? "1px solid rgba(255,80,80,0.5)"
+                            : "1px solid rgba(78,3,255,0.5)",
+                          backgroundColor: "rgba(7,7,8,0.7)",
+                          backdropFilter: "blur(8px)",
+                        }}
+                        initial={{ opacity: 0, width: 42 }}
+                        animate={{ opacity: 1, width: "auto" }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <input
+                          ref={inputRef}
+                          type="email"
+                          required
+                          placeholder="your@email.com"
+                          value={email}
+                          onChange={(e) => { setEmail(e.target.value); if (inputState === "error") setInputState("open"); }}
+                          className="bg-transparent text-white placeholder:text-white/30 outline-none pl-5 pr-2"
+                          style={{ fontFamily: "var(--font-geist-mono)", fontSize: 13, width: "clamp(180px, 22vw, 260px)", height: 42 }}
+                        />
+                        <motion.button
+                          type="submit"
+                          disabled={inputState === "loading"}
+                          className="flex items-center justify-center rounded-full shrink-0 m-1 disabled:opacity-50"
+                          style={{ width: 34, height: 34, backgroundColor: "var(--color-primary)" }}
+                          whileHover={{ scale: 1.08 }}
+                          transition={{ duration: 0.12 }}
+                        >
+                          {inputState === "loading" ? (
+                            <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                              <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" strokeWidth="3"/>
+                              <path d="M12 2a10 10 0 0 1 10 10" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                            </svg>
+                          ) : (
+                            <Image src="/assets/svgs/icon-arrow.svg" alt="Submit" width={14} height={14} />
+                          )}
+                        </motion.button>
+                      </motion.form>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </div>
 
               {/* Error message */}
               <AnimatePresence>
@@ -251,4 +292,6 @@ export default function HeroSection({ avatars, onOpenModal }: HeroSectionProps) 
       </div>
     </section>
   );
-}
+});
+
+export default HeroSection;

@@ -24,18 +24,32 @@ export default function VisionSection() {
             }}
           />
 
-          {/* Label */}
-          <p
-            className="relative mb-6"
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontSize: 14,
-              color: "rgba(255,255,255,0.5)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            [Vision of Innovations In Compiler Technology]
-          </p>
+          {/* Label + full form */}
+          <div className="relative flex flex-col items-center gap-2 mb-10">
+            <p
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: 13,
+                color: "rgba(255,255,255,0.4)",
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
+              }}
+            >
+              Vision of
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-bebas-neue)",
+                fontSize: "clamp(36px, 6.5vw, 88px)",
+                color: "var(--color-text-primary)",
+                letterSpacing: "0.05em",
+                lineHeight: 1,
+                textAlign: "center",
+              }}
+            >
+              Innovations In Compiler Technology
+            </h2>
+          </div>
 
 
           {/* Body */}

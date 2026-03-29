@@ -19,10 +19,10 @@ const AVATARS = [
 const TALK_CARD_BG = "/assets/images/talk-card-bg.png";
 
 const TALKS: TalkCard[] = [
-  { id: "talk-1", title: "talk name Ullamco pariatur sit culpa enim cupidatat", watchUrl: "#talk-1", bgImageSrc: TALK_CARD_BG },
-  { id: "talk-2", title: "talk name Ullamco pariatur sit culpa enim cupidatat", watchUrl: "#talk-2", bgImageSrc: TALK_CARD_BG },
-  { id: "talk-3", title: "talk name Ullamco pariatur sit culpa enim cupidatat", watchUrl: "#talk-3", bgImageSrc: TALK_CARD_BG },
-  { id: "talk-4", title: "talk name Ullamco pariatur sit culpa enim cupidatat", watchUrl: "#talk-4", bgImageSrc: TALK_CARD_BG },
+  { id: "talk-1", title: "Imagining a Next-generation Superoptimizer", watchUrl: "https://www.youtube.com/watch?v=f6a1K81L7hs&t=99s", bgImageSrc: TALK_CARD_BG },
+  { id: "talk-2", title: "Evolving the OCaml Programming Language", watchUrl: "https://www.youtube.com/watch?v=gxJJhjYJ5oo", bgImageSrc: TALK_CARD_BG },
+  { id: "talk-3", title: "Compilers @ Nvidia: Challenges, Innovations, and the Impact of AI", watchUrl: "https://www.youtube.com/watch?v=ePu8AyNiWYs", bgImageSrc: TALK_CARD_BG },
+  { id: "talk-4", title: "eld — Embedded Linker. Why another linker?", watchUrl: "https://www.youtube.com/watch?v=7-dm_iRRdZM", bgImageSrc: TALK_CARD_BG },
 ];
 
 export default function HomeContainer() {

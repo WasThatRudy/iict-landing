@@ -13,16 +13,16 @@ export default function TalksSection({ talks }: TalksSectionProps) {
       id="talks"
       className="py-14 md:py-20"
       style={{ backgroundColor: "var(--color-background)" }}
-      aria-label="Talks from IICT 2025"
+      aria-label="Talks from IICT 2026"
     >
       <div className="mx-auto px-5 md:px-8" style={{ maxWidth: 1240 }}>
         <h2
-          className="text-[var(--color-text-primary)] mb-10 md:mb-12 leading-tight"
+          className="text-[var(--color-text-primary)] mb-10 md:mb-12 text-center w-full"
           style={{
             fontFamily: "var(--font-boldonse)",
             fontSize: "clamp(28px, 3.5vw, 52px)",
             letterSpacing: "-0.01em",
-            maxWidth: 700,
+            lineHeight: "87px",
           }}
         >
           Check Talks From 2025 IICT Conference

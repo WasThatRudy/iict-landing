@@ -75,7 +75,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/assets/images/hero-bg.jpg"
+          src="/assets/images/hero-iict-2025.jpg"
           alt="IICT 2026 conference attendees"
           fill
           className="object-cover object-center"
@@ -101,22 +101,22 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
             <div className="flex items-center gap-3">
               <div
                 className="flex items-center justify-center rounded-full shrink-0"
-                style={{ width: 32, height: 32, backgroundColor: "rgba(255,255,255,0.1)" }}
+                style={{ width: 26, height: 26, backgroundColor: "rgba(255,255,255,0.1)" }}
               >
-                <Image src="/assets/svgs/icon-calendar.svg" alt="" width={15} height={15} />
+                <Image src="/assets/svgs/icon-calendar.svg" alt="" width={12} height={12} />
               </div>
-              <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(14px, 1.5vw, 18px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
+              <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(11px, 1.2vw, 14px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
                 TBA
               </span>
             </div>
             <div className="flex items-center gap-3">
               <div
                 className="flex items-center justify-center rounded-full shrink-0"
-                style={{ width: 32, height: 32, backgroundColor: "rgba(255,255,255,0.1)" }}
+                style={{ width: 26, height: 26, backgroundColor: "rgba(255,255,255,0.1)" }}
               >
-                <Image src="/assets/svgs/icon-location.svg" alt="" width={15} height={15} />
+                <Image src="/assets/svgs/icon-location.svg" alt="" width={12} height={12} />
               </div>
-              <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(14px, 1.5vw, 18px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
+              <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(11px, 1.2vw, 14px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
                 Bengaluru
               </span>
             </div>
@@ -128,7 +128,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
               className="text-white leading-none"
               style={{
                 fontFamily: "var(--font-boldonse)",
-                fontSize: "clamp(48px, 7vw, 96px)",
+                fontSize: "clamp(38px, 5.6vw, 77px)",
                 letterSpacing: "-0.04em",
               }}
             >
@@ -190,9 +190,9 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                       >
                         <span
                           className="flex items-center justify-center rounded-full shrink-0"
-                          style={{ width: 42, height: 42, backgroundColor: "var(--color-primary)" }}
+                          style={{ width: 34, height: 34, backgroundColor: "var(--color-primary)" }}
                         >
-                          <Image src="/assets/svgs/icon-arrow.svg" alt="" width={18} height={18} />
+                          <Image src="/assets/svgs/icon-arrow.svg" alt="" width={14} height={14} />
                         </span>
                         <span className="pr-5 text-white" style={{ fontFamily: "var(--font-geist-mono)", fontWeight: 500, fontSize: 14 }}>
                           Sign Up for Updates

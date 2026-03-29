@@ -126,7 +126,7 @@ export default function TalksSection({ talks, talks2024 = [] }: TalksSectionProp
             letterSpacing: "-0.02em",
           }}
         >
-          Check Talks From Previous IICT Conference
+          Check Talks From Previous<br />IICT Conference
         </h2>
 
         {/* Year tabs + scroll nav buttons */}

@@ -19,7 +19,7 @@ export function errorResponse(err: unknown): Response {
         data: null,
         error: {
           code: "VALIDATION_ERROR",
-          message: err.errors[0]?.message ?? "Invalid input.",
+          message: err.issues[0]?.message ?? "Invalid input.",
         },
       },
       { status: 400 }

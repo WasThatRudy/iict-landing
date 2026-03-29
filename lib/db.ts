@@ -1,11 +1,5 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
-
-if (!MONGODB_URI) {
-  throw new Error("MONGODB_URI environment variable is not defined");
-}
-
 // Singleton connection — reused across hot reloads in dev
 let cached = global._mongoose as {
   conn: typeof mongoose | null;
@@ -17,6 +11,9 @@ if (!cached) {
 }
 
 export async function connectDB(): Promise<typeof mongoose> {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  if (!MONGODB_URI) throw new Error("MONGODB_URI environment variable is not defined");
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {

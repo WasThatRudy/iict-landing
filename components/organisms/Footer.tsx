@@ -77,6 +77,23 @@ export default function Footer() {
 
         </div>
 
+        {/* Contact */}
+        <div className="py-8" style={{ borderBottom: "1.5px dashed rgba(222,222,222,0.12)" }}>
+          <p
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: 13,
+              color: "var(--color-text-primary)",
+              lineHeight: 1.8,
+            }}
+          >
+            In case of any queries please reach out to the workshop organizers{" "}
+            <a href="mailto:aditya.kumar@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Aditya Kumar</a>,{" "}
+            <a href="mailto:ashutosh@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Ashutosh Pandey</a>,{" "}
+            <a href="mailto:pradeep.kumar@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Pradeep Kumar</a>.
+          </p>
+        </div>
+
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 py-5">
           <span

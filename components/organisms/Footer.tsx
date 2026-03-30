@@ -88,7 +88,7 @@ export default function Footer() {
             }}
           >
             In case of any queries please reach out to the workshop organizers{" "}
-            <a href="mailto:aditya.kumar@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Aditya Kumar</a>,{" "}
+            <a href="mailto:prerona.chaudhuri@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Prerona Chaudhuri</a>,{" "}
             <a href="mailto:ashutosh@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Ashutosh Pandey</a>,{" "}
             <a href="mailto:pradeep.kumar@compilertech.org" className="underline opacity-80 hover:opacity-100 transition-opacity">Pradeep Kumar</a>.
           </p>
@@ -114,7 +114,7 @@ export default function Footer() {
               letterSpacing: "-0.02em",
             }}
           >
-            Compiler workshop bridging academia and industry
+            A Compiler Workshop bridging academia and industry
           </span>
         </div>
       </div>

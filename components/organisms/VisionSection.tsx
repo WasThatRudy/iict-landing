@@ -5,7 +5,7 @@ import { useRef, useState, useLayoutEffect } from "react";
 const HEADING_WORDS = ["Innovations", "In", "Compiler", "Technology"];
 
 const BODY =
-  "The IICT workshop aims to bring together researchers, practitioners, and enthusiasts in the field of compiler technologies. This year's theme focuses on the cutting-edge advancements in design, implementation, and optimization of compiler techniques as well as their applications in emerging software and hardware platforms. The workshop consists of accepted talks by our esteemed Program Committee along with invited talks by experts from both academia and industry. This is a novel opportunity to interact and learn from experts and enthusiasts from both academia and industry. We invite presentation proposals for our upcoming workshop.";
+  "The IICT workshop aims to bring together researchers, practitioners, and enthusiasts in the field of compiler technologies. This year's theme focuses on the cutting-edge advancements in design, implementation, and optimization of compiler techniques as well as their applications in emerging software and hardware platforms. The workshop consists of talks reviewed by our esteemed Program Committee along with invited talks by experts from both industry and academia. This is a novel opportunity to interact and learn from experts and enthusiasts from both academia and industry. We invite presentation proposals for our upcoming workshop.";
 
 export default function VisionSection() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -224,7 +224,7 @@ export default function VisionSection() {
 
         {/* About IICT */}
         <div
-          className="flex flex-col md:flex-row gap-10 md:gap-16 mt-6"
+          className="flex flex-col md:flex-row gap-10 md:gap-16 mt-16 md:mt-20"
           style={{ padding: "0 4px" }}
         >
           {/* Left: text */}
@@ -252,9 +252,10 @@ export default function VisionSection() {
               Innovations in Compiler Technology (IICT) is a workshop dedicated to bringing together
               researchers, practitioners, and enthusiasts in the field of compiler technologies.
               Our inaugural edition, IICT 2024, was met with an enthusiastic response, drawing over
-              200 participants from across the compiler community. Building on that success, we&apos;re
-              excited to announce that IICT 2025 is set to be even bigger — now an ACM-sponsored
-              event, hosted at IISc Bangalore.
+              200 participants from across the compiler community. Building on that success, IICT 2025
+              introduced India&apos;s first Compiler themed Hackathon —{" "}
+              <a href="https://segfault.compilertech.org" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>SEGFAULT</a>
+              {" "}— and grew to 380+ participants. The 2025 edition was supported by ACM.
             </p>
           </div>
 
@@ -262,8 +263,8 @@ export default function VisionSection() {
           <div className="flex flex-col sm:flex-row md:flex-col justify-start gap-4 shrink-0">
             {[
               { value: "200+",          label: "Participants in 2024" },
+              { value: "380+",          label: "Participants in 2025" },
               { value: "ACM Sponsored", label: "IICT 2025"            },
-              { value: "IISc Bangalore",label: "Host institution"     },
             ].map(({ value, label }) => (
               <div
                 key={label}

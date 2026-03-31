@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: "/assets/images/og-image.png",
         width: 2923,
         height: 1749,
-        alt: "IICT 2026 — Compiler workshop bridging academia and industry",
+        alt: "IICT 2026 — A Compiler Workshop bridging academia and industry",
       },
     ],
   },

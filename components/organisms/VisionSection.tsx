@@ -118,7 +118,7 @@ export default function VisionSection() {
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: 13,
-              color: "rgba(255,255,255,0.4)",
+              color: "rgba(255,255,255,0.6)",
               letterSpacing: "0.04em",
               textTransform: "uppercase",
             }}
@@ -144,7 +144,7 @@ export default function VisionSection() {
               // Initial: same as rest at rest, purple-tinted white + glow on hover
               const initialColor = p > 0.01
                 ? `rgba(${Math.round(180 + p * 75)},${Math.round(130 + p * 125)},255,${0.7 + p * 0.3})`
-                : `rgba(255,255,255,0.55)`;
+                : `rgba(255,255,255,0.75)`;
               const initialShadow = p > 0.01
                 ? `0 0 ${10 + p * 22}px rgba(160,100,255,${p * 0.9})`
                 : "none";
@@ -170,7 +170,7 @@ export default function VisionSection() {
                   </span>
                   <span
                     style={{
-                      color: `rgba(255,255,255,${0.45 + p * 0.45})`,
+                      color: `rgba(255,255,255,${0.65 + p * 0.35})`,
                       transition: "color 0.15s ease",
                     }}
                   >
@@ -190,7 +190,7 @@ export default function VisionSection() {
                 fontFamily: "var(--font-geist-mono)",
                 fontWeight: 600,
                 fontSize: "clamp(13px, 1.2vw, 16px)",
-                color: "rgba(255,255,255,0.35)",
+                color: "rgba(255,255,255,0.55)",
                 lineHeight: 1.7,
                 letterSpacing: "-0.03em",
               }}

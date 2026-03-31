@@ -221,7 +221,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                   letterSpacing: "0.02em",
                 }}
               >
-                Compiler workshop bridging academia and industry
+                A Compiler Workshop bridging academia and industry
               </p>
             </motion.div>
 

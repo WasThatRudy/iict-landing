@@ -66,9 +66,9 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
       id="hero"
       className="relative flex flex-col overflow-hidden"
       style={{
-        minHeight: "calc(100svh - 80px)",
-        marginTop: -80,
-        paddingTop: 80,
+        minHeight: "100svh",
+        marginTop: -96,
+        paddingTop: 96,
         backgroundColor: "var(--color-background)",
       }}
       aria-label="Hero"

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface NavbarProps {
   onOpenModal: () => void;
@@ -17,15 +17,23 @@ const NAV_LINKS = [
 
 export default function Navbar({ onOpenModal }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
       <header
-        className="sticky top-0 z-50 overflow-hidden"
+        className="sticky top-0 z-50 overflow-hidden pt-4"
         style={{
-          backgroundColor: "rgba(0,0,0,0.1)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
+          backgroundColor: scrolled ? "rgba(0,0,0,0.6)" : "transparent",
+          backdropFilter: scrolled ? "blur(14px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+          transition: "background-color 0.3s ease, backdrop-filter 0.3s ease",
         }}
       >
         <nav

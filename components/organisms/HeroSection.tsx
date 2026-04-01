@@ -76,7 +76,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/assets/images/hero-iict-2025.jpg"
+          src="/assets/images/hero-iict-2026.png"
           alt="IICT 2026 conference attendees"
           fill
           className="object-cover object-center"

@@ -180,6 +180,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
           >
             {/* Logo */}
             <motion.div
+              className="flex flex-col items-center gap-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -192,6 +193,17 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                 className="object-contain w-[160px] md:w-[220px]"
                 priority
               />
+              <p
+                style={{
+                  fontFamily: "var(--font-bebas-neue)",
+                  fontSize: "clamp(13px, 2vw, 17px)",
+                  letterSpacing: "0.18em",
+                  color: "rgba(255,255,255,0.5)",
+                  textTransform: "uppercase",
+                }}
+              >
+                Innovations in Compiler Technology
+              </p>
             </motion.div>
 
             {/* Welcome */}

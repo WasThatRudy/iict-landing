@@ -30,9 +30,9 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
       <header
         className="sticky top-0 z-50 overflow-hidden pt-4"
         style={{
-          backgroundColor: scrolled ? "rgba(0,0,0,0.6)" : "transparent",
-          backdropFilter: scrolled ? "blur(14px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+          backgroundColor: scrolled ? "rgba(7,7,8,0.82)" : "transparent",
+          backdropFilter: scrolled ? "blur(6px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(6px)" : "none",
           transition: "background-color 0.3s ease, backdrop-filter 0.3s ease",
         }}
       >

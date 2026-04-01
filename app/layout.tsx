@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   description:
     "Join IICT 2026 in Bengaluru. The premier conference for computing practitioners across India. Sign up for updates.",
   openGraph: {
-    title: "IICT 2026",
-    description: "India's Inclusive Computing Conference — Coming Soon, Bengaluru",
+    title: "IICT 2026 — Innovations In Compiler Technology",
+    description: "A compiler workshop bridging academia and industry. Join researchers, practitioners and enthusiasts at IICT 2026 in Bengaluru.",
     type: "website",
     images: [
       {
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IICT 2026",
-    description: "India's Inclusive Computing Conference — Coming Soon, Bengaluru",
+    title: "IICT 2026 — Innovations In Compiler Technology",
+    description: "A compiler workshop bridging academia and industry. Join researchers, practitioners and enthusiasts at IICT 2026 in Bengaluru.",
     images: ["/assets/images/og-image.jpg"],
   },
 };

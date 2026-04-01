@@ -29,6 +29,7 @@ const bebasNeue = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://compilertech.org"),
   title: "IICT 2026 — India's Inclusive Computing Conference",
   description:
     "Join IICT 2026 in Bengaluru. The premier conference for computing practitioners across India. Sign up for updates.",
@@ -38,9 +39,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/images/og-image.png",
-        width: 2923,
-        height: 1749,
+        url: "/assets/images/og-image.jpg",
+        width: 1200,
+        height: 630,
         alt: "IICT 2026 — A Compiler Workshop bridging academia and industry",
       },
     ],
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IICT 2026",
     description: "India's Inclusive Computing Conference — Coming Soon, Bengaluru",
-    images: ["/assets/images/og-image.png"],
+    images: ["/assets/images/og-image.jpg"],
   },
 };
 

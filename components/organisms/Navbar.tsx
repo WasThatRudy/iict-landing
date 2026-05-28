@@ -10,12 +10,13 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
-  { label: "Home",    href: "/#hero",        match: "/",             matchType: "exact"  as const },
-  { label: "Vision",  href: "/#vision",      match: "/",             matchType: "exact"  as const },
-  { label: "Recap",   href: "/#recap",       match: "/",             matchType: "exact"  as const },
-  { label: "Archive", href: "/#archive",     match: "/",             matchType: "exact"  as const },
+  { label: "Home",        href: "/#hero",        match: "/",             matchType: "exact"  as const },
+  { label: "Vision",      href: "/#vision",      match: "/",             matchType: "exact"  as const },
+  { label: "Recap",       href: "/#recap",       match: "/",             matchType: "exact"  as const },
+  { label: "Archive",     href: "/#archive",     match: "/",             matchType: "exact"  as const },
+  { label: "Committee",   href: "/committee",    match: "/committee",    matchType: "prefix" as const },
   { label: "Submissions", href: "/submissions",  match: "/submissions",  matchType: "prefix" as const },
-  { label: "Sponsor", href: "/sponsorships", match: "/sponsorships", matchType: "prefix" as const },
+  { label: "Sponsor",     href: "/sponsorships", match: "/sponsorships", matchType: "prefix" as const },
 ];
 
 export default function Navbar({ onOpenModal }: NavbarProps) {

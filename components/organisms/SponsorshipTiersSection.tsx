@@ -102,7 +102,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: 12,
-              color: "rgba(255,255,255,0.5)",
+              color: "#ff8855",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
@@ -147,7 +147,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: "clamp(13px, 1.2vw, 16px)",
-              color: "rgba(255,255,255,0.6)",
+              color: "var(--color-text-primary)",
               lineHeight: 1.7,
               letterSpacing: "-0.02em",
               maxWidth: 720,
@@ -193,7 +193,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
                 style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: 11,
-                  color: "rgba(255,255,255,0.55)",
+                  color: "#ff8855",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                 }}
@@ -285,7 +285,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
                       style={{
                         fontFamily: "var(--font-geist-mono)",
                         fontSize: 11,
-                        color: "rgba(255,255,255,0.4)",
+                        color: "#ff8855",
                         letterSpacing: "-0.01em",
                       }}
                     >
@@ -340,7 +340,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
                 style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: 11,
-                  color: "rgba(255,255,255,0.55)",
+                  color: "#ff8855",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                 }}
@@ -375,7 +375,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
                   style={{
                     fontFamily: "var(--font-geist-mono)",
                     fontSize: 10,
-                    color: "rgba(255,255,255,0.45)",
+                    color: "#ff8855",
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
                   }}
@@ -452,7 +452,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
                       style={{
                         fontFamily: "var(--font-geist-mono)",
                         fontSize: 12.5,
-                        color: "rgba(255,255,255,0.72)",
+                        color: "var(--color-text-primary)",
                         lineHeight: 1.5,
                         flex: 1,
                       }}
@@ -493,7 +493,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: "clamp(13px, 1.1vw, 15px)",
-                color: "rgba(255,255,255,0.72)",
+                color: "var(--color-text-primary)",
                 lineHeight: 1.7,
                 letterSpacing: "-0.02em",
                 maxWidth: 640,
@@ -593,7 +593,7 @@ function Cell({ value }: { value: CellValue }) {
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
           <path
             d="M6 6l12 12M18 6L6 18"
-            stroke="rgba(255,255,255,0.35)"
+            stroke="#ff5c4d"
             strokeWidth="2.4"
             strokeLinecap="round"
           />

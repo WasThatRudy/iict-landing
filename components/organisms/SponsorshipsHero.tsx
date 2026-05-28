@@ -66,7 +66,7 @@ export default function SponsorshipsHero({ sponsorshipEmail }: SponsorshipsHeroP
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: 12,
-              color: "rgba(255,255,255,0.65)",
+              color: "#ff8855",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
@@ -112,7 +112,7 @@ export default function SponsorshipsHero({ sponsorshipEmail }: SponsorshipsHeroP
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: "clamp(14px, 1.4vw, 18px)",
-              color: "rgba(255,255,255,0.75)",
+              color: "var(--color-text-primary)",
               lineHeight: 1.7,
               letterSpacing: "-0.02em",
               maxWidth: 760,
@@ -123,22 +123,6 @@ export default function SponsorshipsHero({ sponsorshipEmail }: SponsorshipsHeroP
             A premier forum dedicated to compiler technologies and their evolving role in modern
             software and hardware platforms. IICT brings together researchers, practitioners, and
             enthusiasts working on the design, implementation, and optimization of compiler systems.
-          </motion.p>
-          <motion.p
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontSize: "clamp(13px, 1.2vw, 16px)",
-              color: "rgba(255,255,255,0.55)",
-              lineHeight: 1.7,
-              letterSpacing: "-0.02em",
-              maxWidth: 760,
-            }}
-            variants={FADE_UP}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            Following an inaugural 2024 edition with 200+ professionals and a 2025 edition that grew
-            to 380+ participants under ACM patronage — and introduced India&apos;s first compiler-themed
-            hackathon, SEGFAULT — IICT returns in 2026 with even greater ambition.
           </motion.p>
         </div>
 
@@ -175,27 +159,16 @@ export default function SponsorshipsHero({ sponsorshipEmail }: SponsorshipsHeroP
           variants={FADE_UP}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          <motion.div
-            className="absolute inset-y-0 left-0"
-            style={{
-              width: 4,
-              background: "linear-gradient(180deg, #ff3399 0%, #4e03ff 100%)",
-            }}
-            initial={{ scaleY: 0, transformOrigin: "top" }}
-            animate={{ scaleY: 1 }}
-            transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          />
           <p
-            className="pl-3"
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: "clamp(13px, 1.2vw, 16px)",
-              color: "rgba(255,255,255,0.8)",
+              color: "var(--color-text-primary)",
               lineHeight: 1.7,
               letterSpacing: "-0.02em",
             }}
           >
-            <span style={{ color: "rgba(255,255,255,1)", fontWeight: 600 }}>
+            <span style={{ color: "var(--color-text-primary)", fontWeight: 700 }}>
               IICT is more than a technical workshop.
             </span>{" "}
             It is a collaborative initiative to advance compiler education, research, and innovation
@@ -245,7 +218,7 @@ function MetaItem({ icon, label, value, href }: MetaItemProps) {
           style={{
             fontFamily: "var(--font-geist-mono)",
             fontSize: 11,
-            color: "rgba(255,255,255,0.5)",
+            color: "#ff8855",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
           }}

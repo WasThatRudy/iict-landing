@@ -78,7 +78,7 @@ export default function AudienceProfileSection() {
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: 12,
-              color: "rgba(255,255,255,0.5)",
+              color: "#ff8855",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
@@ -97,7 +97,7 @@ export default function AudienceProfileSection() {
               maxWidth: 880,
             }}
           >
-            Who you&apos;ll reach at{" "}
+            Attendee Heritage &amp;{" "}
             <motion.span
               style={{
                 background:
@@ -114,7 +114,7 @@ export default function AudienceProfileSection() {
               animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             >
-              IICT 2026
+              Horizon
             </motion.span>
           </motion.h2>
         </motion.div>
@@ -174,7 +174,7 @@ export default function AudienceProfileSection() {
                   style={{
                     fontFamily: "var(--font-geist-mono)",
                     fontSize: "clamp(13px, 1.1vw, 15px)",
-                    color: "rgba(255,255,255,0.72)",
+                    color: "var(--color-text-primary)",
                     lineHeight: 1.7,
                     letterSpacing: "-0.02em",
                   }}
@@ -242,7 +242,7 @@ export default function AudienceProfileSection() {
                   style={{
                     fontFamily: "var(--font-geist-mono)",
                     fontSize: "clamp(13px, 1.1vw, 15px)",
-                    color: "rgba(255,255,255,0.72)",
+                    color: "var(--color-text-primary)",
                     lineHeight: 1.7,
                     letterSpacing: "-0.02em",
                   }}
@@ -302,7 +302,7 @@ function StatCard({ stat }: { stat: Stat }) {
         style={{
           fontFamily: "var(--font-geist-mono)",
           fontSize: 11,
-          color: "rgba(255,255,255,0.5)",
+          color: "#ff8855",
           letterSpacing: "0.08em",
           textTransform: "uppercase",
         }}

@@ -49,7 +49,7 @@ export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps
         />
         {/* Role pill */}
         <span
-          className="absolute top-3 right-3 inline-flex items-center rounded-full px-3 py-1"
+          className="absolute top-2 right-2 inline-flex items-center rounded-full px-2 py-0.5"
           style={{
             backgroundColor: "rgba(7,7,8,0.7)",
             backdropFilter: "blur(6px)",
@@ -60,9 +60,9 @@ export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps
           <span
             style={{
               fontFamily: "var(--font-geist-mono)",
-              fontSize: 11,
+              fontSize: 10,
               color: "#ff8855",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.06em",
               textTransform: "uppercase",
               fontWeight: 600,
               whiteSpace: "nowrap",
@@ -74,15 +74,15 @@ export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps
       </div>
 
       {/* Body */}
-      <div className="px-5 py-4 flex flex-col gap-1">
+      <div className="px-3.5 py-3 md:px-4 md:py-3.5 flex flex-col gap-0.5">
         <span
           style={{
             fontFamily: "var(--font-geist-mono)",
-            fontSize: 15,
+            fontSize: 13,
             fontWeight: 600,
             color: "var(--color-text-primary)",
             letterSpacing: "-0.01em",
-            lineHeight: 1.4,
+            lineHeight: 1.35,
           }}
         >
           {member.name}
@@ -90,10 +90,10 @@ export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps
         <span
           style={{
             fontFamily: "var(--font-geist-mono)",
-            fontSize: 12.5,
+            fontSize: 11.5,
             color: "var(--color-text-primary)",
             letterSpacing: "-0.01em",
-            lineHeight: 1.5,
+            lineHeight: 1.45,
             opacity: 0.92,
           }}
         >

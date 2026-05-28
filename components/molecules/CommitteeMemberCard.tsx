@@ -10,6 +10,10 @@ interface CommitteeMemberCardProps {
 
 export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps) {
   const role = member.position.replace(/[()]/g, "");
+  // Committee SVGs ship with an 8px drop-shadow ring on a 116×116 canvas
+  // (inner photo is 100×100). Scale them up to crop the ring so the photo
+  // reaches the card edges. WebP photos render full-bleed and need no scaling.
+  const isSvg = member.image.endsWith(".svg");
   return (
     <motion.a
       href={member.link}
@@ -29,14 +33,17 @@ export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps
       aria-label={`${member.name}, ${role}`}
     >
       {/* Photo */}
-      <div className="relative" style={{ aspectRatio: "4 / 5" }}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: "4 / 5" }}>
         <Image
           src={member.image}
           alt={member.name}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover"
-          style={{ transition: "transform 0.4s ease" }}
+          style={{
+            transform: isSvg ? "scale(1.16)" : "none",
+            transformOrigin: "center",
+          }}
         />
         {/* Bottom gradient for legibility on image edge */}
         <div

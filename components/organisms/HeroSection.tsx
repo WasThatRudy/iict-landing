@@ -107,7 +107,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                 <Image src="/assets/svgs/icon-calendar.svg" alt="" width={12} height={12} />
               </div>
               <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(11px, 1.2vw, 14px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
-                TBA
+                2 &amp; 3 October, 2026
               </span>
             </div>
             <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                 <Image src="/assets/svgs/icon-location.svg" alt="" width={12} height={12} />
               </div>
               <span style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(11px, 1.2vw, 14px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
-                Bengaluru
+                IISc, Bengaluru
               </span>
             </div>
           </div>

@@ -19,8 +19,8 @@ const REASONS = [
   },
   {
     n: "03",
-    title: "Engage with the field",
-    body: "Direct engagement with academic experts, researchers, and practitioners.",
+    title: "Network within the field",
+    body: "Build connections with academic experts, researchers, and practitioners.",
   },
   {
     n: "04",

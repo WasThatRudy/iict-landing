@@ -342,7 +342,7 @@ export default function SponsorshipFormSection() {
                     className="mt-1 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 disabled:opacity-60"
                     style={{
                       background:
-                        "linear-gradient(95deg, #ff2d8e 0%, #ff5c4d 50%, #ff9a3c 100%)",
+                        "linear-gradient(95deg, #ff2d8e 0%, #ff5c4d 25%, #ff9a3c 50%, #ffc14a 75%, #ff2d8e 100%)",
                       backgroundSize: "200% auto",
                       color: "#fff",
                       fontFamily: "var(--font-geist-mono)",

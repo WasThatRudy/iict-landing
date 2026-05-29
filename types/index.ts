@@ -12,12 +12,3 @@ export interface NavLink {
   href: string;
   hasDropdown?: boolean;
 }
-
-export interface CommitteeMember {
-  id: string;
-  image: string;
-  name: string;
-  institute: string;
-  position: string;
-  link: string;
-}

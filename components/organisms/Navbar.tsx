@@ -3,27 +3,37 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   onOpenModal: () => void;
 }
 
 const NAV_LINKS = [
-  { label: "Home",    href: "#hero",    active: true  },
-  { label: "Vision",  href: "#vision",  active: false },
-  { label: "Recap",   href: "#recap",   active: false },
-  { label: "Archive", href: "#archive", active: false },
+  { label: "Home",        href: "/#hero",        match: "/",             matchType: "exact"  as const },
+  { label: "Vision",      href: "/#vision",      match: "/",             matchType: "exact"  as const },
+  { label: "Recap",       href: "/#recap",       match: "/",             matchType: "exact"  as const },
+  { label: "Archive",     href: "/#archive",     match: "/",             matchType: "exact"  as const },
+  { label: "Submissions", href: "/submissions",  match: "/submissions",  matchType: "prefix" as const },
+  { label: "Sponsor",     href: "/sponsorships", match: "/sponsorships", matchType: "prefix" as const },
 ];
 
 export default function Navbar({ onOpenModal }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname() ?? "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  function isActive(link: (typeof NAV_LINKS)[number]) {
+    if (link.label === "Home") return pathname === "/";
+    if (link.matchType === "prefix") return pathname.startsWith(link.match);
+    return false;
+  }
 
   return (
     <>
@@ -81,7 +91,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                   fontFamily: "var(--font-bebas-neue)",
                   fontSize: 14,
                   letterSpacing: "0.14em",
-                  color: link.active ? "#ffffff" : "rgba(255,255,255,0.5)",
+                  color: isActive(link) ? "#ffffff" : "rgba(255,255,255,0.5)",
                 }}
                 whileHover={{ color: "#ffffff", y: -1 }}
                 transition={{ duration: 0.15 }}
@@ -157,7 +167,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
                     fontFamily: "var(--font-bebas-neue)",
                     fontSize: 32,
                     letterSpacing: "0.1em",
-                    color: link.active ? "#ffffff" : "rgba(255,255,255,0.5)",
+                    color: isActive(link) ? "#ffffff" : "rgba(255,255,255,0.5)",
                     borderColor: "rgba(255,255,255,0.06)",
                   }}
                   initial={{ opacity: 0, x: -16 }}

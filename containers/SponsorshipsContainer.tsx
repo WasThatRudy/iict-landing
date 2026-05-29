@@ -9,7 +9,7 @@ import SponsorshipFormSection from "@/components/organisms/SponsorshipFormSectio
 import SponsorshipContactSection from "@/components/organisms/SponsorshipContactSection";
 import Footer from "@/components/organisms/Footer";
 
-const SPONSORSHIP_EMAIL = "support@compilertech.org";
+const SPONSORSHIP_EMAIL = "sponsorship@compilertech.org";
 const CONTACT_ANCHOR = "/sponsorships#contact-form";
 
 export default function SponsorshipsContainer() {

@@ -188,7 +188,7 @@ export default function SponsorshipContactSection({
 
           {/* CTA card */}
           <motion.a
-            href={`mailto:${sponsorshipEmail}`}
+            href="#contact-form"
             className="relative overflow-hidden rounded-2xl p-7 flex flex-col justify-between gap-6"
             style={{
               background:
@@ -261,7 +261,7 @@ export default function SponsorshipContactSection({
                   letterSpacing: "-0.01em",
                 }}
               >
-                Email the sponsorship team
+                Open the inquiry form
               </span>
             </div>
           </motion.a>

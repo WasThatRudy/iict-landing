@@ -6,6 +6,8 @@ export type ErrorCode =
   | "NOT_FOUND"
   | "UNAUTHORIZED"
   | "FORBIDDEN"
+  | "RATE_LIMITED"
+  | "EMAIL_SEND_FAILED"
   | "INTERNAL_ERROR";
 
 export class AppError extends Error {
@@ -30,6 +32,10 @@ export const Errors = {
     new AppError("UNAUTHORIZED", "Authentication required.", 401),
   forbidden: () =>
     new AppError("FORBIDDEN", "You do not have permission to do this.", 403),
+  rateLimited: () =>
+    new AppError("RATE_LIMITED", "Too many requests. Please wait a few minutes and try again.", 429),
+  emailSendFailed: () =>
+    new AppError("EMAIL_SEND_FAILED", "We saved your inquiry but couldn't send the email. We'll still see it.", 502),
   internal: () =>
     new AppError("INTERNAL_ERROR", "Something went wrong. Please try again.", 500),
 };

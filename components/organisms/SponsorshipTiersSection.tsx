@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 interface SponsorshipTiersSectionProps {
-  sponsorshipEmail: string;
+  contactHref?: string;
 }
 
 type TierKey = "platinum" | "gold" | "silver" | "bronze";
@@ -78,7 +78,7 @@ const CONTAINER = {
 
 const VIEWPORT = { once: true, margin: "-80px" };
 
-export default function SponsorshipTiersSection({ sponsorshipEmail }: SponsorshipTiersSectionProps) {
+export default function SponsorshipTiersSection({ contactHref = "#contact-form" }: SponsorshipTiersSectionProps) {
   const [hoverTier, setHoverTier] = useState<TierKey | null>(null);
 
   return (
@@ -504,7 +504,7 @@ export default function SponsorshipTiersSection({ sponsorshipEmail }: Sponsorshi
             </p>
           </div>
           <motion.a
-            href={`mailto:${sponsorshipEmail}`}
+            href={contactHref}
             className="inline-flex items-center gap-2 self-start md:self-auto rounded-full px-5 py-3 shrink-0"
             style={{ backgroundColor: "var(--color-primary)" }}
             whileHover={{ scale: 1.04, boxShadow: "0 0 28px rgba(78,3,255,0.6)" }}

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 interface WhyPartnerSectionProps {
-  sponsorshipEmail: string;
+  contactHref?: string;
 }
 
 const REASONS = [
@@ -46,7 +46,7 @@ const CONTAINER = {
 
 const VIEWPORT = { once: true, margin: "-80px" };
 
-export default function WhyPartnerSection({ sponsorshipEmail }: WhyPartnerSectionProps) {
+export default function WhyPartnerSection({ contactHref = "#contact-form" }: WhyPartnerSectionProps) {
   return (
     <section
       id="why-partner"
@@ -138,7 +138,7 @@ export default function WhyPartnerSection({ sponsorshipEmail }: WhyPartnerSectio
 
           {/* CTA card */}
           <motion.a
-            href={`mailto:${sponsorshipEmail}`}
+            href={contactHref}
             className="relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between gap-5"
             style={{
               backgroundColor: "#0a0a0c",
@@ -194,7 +194,7 @@ export default function WhyPartnerSection({ sponsorshipEmail }: WhyPartnerSectio
                   letterSpacing: "-0.01em",
                 }}
               >
-                {sponsorshipEmail}
+                Start a conversation
               </span>
               <motion.span
                 style={{

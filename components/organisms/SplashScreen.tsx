@@ -208,7 +208,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                   fontFamily: "var(--font-boldonse)",
                   fontSize: "clamp(28px, 5.6vw, 60px)",
                   letterSpacing: "0.04em",
-                  lineHeight: 1.18,
+                  lineHeight: 1.4,
                   textShadow: "0 0 60px rgba(78,3,255,0.5)",
                   maxWidth: "18ch",
                 }}

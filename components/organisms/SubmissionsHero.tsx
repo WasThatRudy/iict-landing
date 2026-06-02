@@ -13,11 +13,7 @@ const CONTAINER = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 
-interface SubmissionsHeroProps {
-  easyChairUrl: string;
-}
-
-export default function SubmissionsHero({ easyChairUrl }: SubmissionsHeroProps) {
+export default function SubmissionsHero() {
   return (
     <section
       id="submissions-hero"
@@ -122,42 +118,11 @@ export default function SubmissionsHero({ easyChairUrl }: SubmissionsHeroProps) 
         </motion.p>
 
         <motion.div
-          className="flex flex-col md:flex-row md:items-center gap-5"
+          className="flex"
           variants={FADE_UP}
           transition={{ duration: 0.5 }}
         >
           <StatusPill />
-
-          <motion.a
-            href={easyChairUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 self-start"
-            style={{
-              background:
-                "linear-gradient(95deg, #ff2d8e 0%, #ff5c4d 25%, #ff9a3c 50%, #ffc14a 75%, #ff2d8e 100%)",
-              backgroundSize: "200% auto",
-              color: "#fff",
-              fontFamily: "var(--font-geist-mono)",
-              fontWeight: 600,
-              fontSize: 14,
-              letterSpacing: "0.02em",
-            }}
-            animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            whileHover={{ scale: 1.03, boxShadow: "0 0 28px rgba(255,90,77,0.5)" }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <span>Submit on EasyChair</span>
-            <motion.span
-              aria-hidden
-              style={{ display: "inline-block" }}
-              animate={{ x: [0, 4, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              →
-            </motion.span>
-          </motion.a>
         </motion.div>
 
         <motion.div

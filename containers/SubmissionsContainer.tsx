@@ -8,19 +8,12 @@ import SubmissionsImportantDatesSection from "@/components/organisms/Submissions
 import SubmissionsInfoSection from "@/components/organisms/SubmissionsInfoSection";
 import Footer from "@/components/organisms/Footer";
 
-const EASYCHAIR_URL = "https://easychair.org/my/conference?conf=compilertech2025";
-
 export default function SubmissionsContainer() {
-  function openEasyChair() {
-    if (typeof window === "undefined") return;
-    window.open(EASYCHAIR_URL, "_blank", "noopener,noreferrer");
-  }
-
   return (
     <main style={{ backgroundColor: "var(--color-background)" }}>
-      <Navbar onOpenModal={openEasyChair} />
-      <SubmissionsHero easyChairUrl={EASYCHAIR_URL} />
-      <SubmissionsTracksSection easyChairUrl={EASYCHAIR_URL} />
+      <Navbar onOpenModal={() => {}} />
+      <SubmissionsHero />
+      <SubmissionsTracksSection />
       <SubmissionsReviewProcessSection />
       <SubmissionsImportantDatesSection />
       <SubmissionsInfoSection />

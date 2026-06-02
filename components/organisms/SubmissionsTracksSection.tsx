@@ -2,9 +2,6 @@
 
 import { motion } from "framer-motion";
 
-interface SubmissionsTracksSectionProps {
-  easyChairUrl: string;
-}
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 24 },
@@ -29,7 +26,7 @@ const WRITING_RESOURCES: { label: string; url: string }[] = [
   },
 ];
 
-export default function SubmissionsTracksSection({ easyChairUrl }: SubmissionsTracksSectionProps) {
+export default function SubmissionsTracksSection() {
   return (
     <section
       id="tracks"
@@ -121,7 +118,6 @@ export default function SubmissionsTracksSection({ easyChairUrl }: SubmissionsTr
               { label: "Extended abstract", value: "2 – 4 pages" },
               { label: "Full paper",        value: "4 – 8 pages" },
             ]}
-            href={easyChairUrl}
           />
           <TrackCard
             kicker="Practice Papers"
@@ -130,7 +126,6 @@ export default function SubmissionsTracksSection({ easyChairUrl }: SubmissionsTr
               { label: "Extended abstract", value: "1 page or more" },
               { label: "Slides",            value: "Slide deck" },
             ]}
-            href={easyChairUrl}
           />
         </motion.div>
 
@@ -227,10 +222,9 @@ interface TrackCardProps {
   kicker: string;
   title: string;
   items: { label: string; value: string }[];
-  href: string;
 }
 
-function TrackCard({ kicker, title, items, href }: TrackCardProps) {
+function TrackCard({ kicker, title, items }: TrackCardProps) {
   return (
     <motion.article
       className="rounded-2xl p-6 md:p-8 flex flex-col gap-5 relative overflow-hidden"
@@ -312,31 +306,6 @@ function TrackCard({ kicker, title, items, href }: TrackCardProps) {
         ))}
       </ul>
 
-      <motion.a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 self-start mt-1"
-        style={{
-          fontFamily: "var(--font-geist-mono)",
-          fontSize: 13,
-          color: "#ff6699",
-          letterSpacing: "-0.01em",
-          fontWeight: 600,
-        }}
-        whileHover={{ x: 2 }}
-        transition={{ duration: 0.18 }}
-      >
-        <span>Submit this track</span>
-        <motion.span
-          aria-hidden
-          style={{ display: "inline-block" }}
-          animate={{ x: [0, 4, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          →
-        </motion.span>
-      </motion.a>
     </motion.article>
   );
 }

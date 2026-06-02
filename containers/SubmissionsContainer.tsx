@@ -2,21 +2,28 @@
 
 import Navbar from "@/components/organisms/Navbar";
 import SubmissionsHero from "@/components/organisms/SubmissionsHero";
-import SubmissionsDetailsSection from "@/components/organisms/SubmissionsDetailsSection";
+import SubmissionsTracksSection from "@/components/organisms/SubmissionsTracksSection";
+import SubmissionsReviewProcessSection from "@/components/organisms/SubmissionsReviewProcessSection";
+import SubmissionsImportantDatesSection from "@/components/organisms/SubmissionsImportantDatesSection";
+import SubmissionsInfoSection from "@/components/organisms/SubmissionsInfoSection";
 import Footer from "@/components/organisms/Footer";
 
-const SUBMISSIONS_EMAIL = "submissions@compilertech.org";
+const EASYCHAIR_URL = "https://easychair.org/my/conference?conf=compilertech2025";
 
 export default function SubmissionsContainer() {
-  function openSubmissionsEmail() {
-    window.location.href = `mailto:${SUBMISSIONS_EMAIL}`;
+  function openEasyChair() {
+    if (typeof window === "undefined") return;
+    window.open(EASYCHAIR_URL, "_blank", "noopener,noreferrer");
   }
 
   return (
     <main style={{ backgroundColor: "var(--color-background)" }}>
-      <Navbar onOpenModal={openSubmissionsEmail} />
-      <SubmissionsHero />
-      <SubmissionsDetailsSection />
+      <Navbar onOpenModal={openEasyChair} />
+      <SubmissionsHero easyChairUrl={EASYCHAIR_URL} />
+      <SubmissionsTracksSection easyChairUrl={EASYCHAIR_URL} />
+      <SubmissionsReviewProcessSection />
+      <SubmissionsImportantDatesSection />
+      <SubmissionsInfoSection />
       <Footer />
     </main>
   );

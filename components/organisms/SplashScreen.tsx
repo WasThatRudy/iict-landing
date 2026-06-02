@@ -207,10 +207,10 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                 style={{
                   fontFamily: "var(--font-boldonse)",
                   fontSize: "clamp(28px, 5.6vw, 60px)",
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1.12,
+                  letterSpacing: "0.04em",
+                  lineHeight: 1.18,
                   textShadow: "0 0 60px rgba(78,3,255,0.5)",
-                  maxWidth: "16ch",
+                  maxWidth: "18ch",
                 }}
               >
                 Innovations in Compiler Technology

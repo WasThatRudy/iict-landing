@@ -176,7 +176,7 @@ export default function SubmissionsHero({ easyChairUrl }: SubmissionsHeroProps) 
 function StatusPill() {
   return (
     <motion.span
-      className="inline-flex items-center gap-2 rounded-full px-4 py-2 self-start"
+      className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 self-start"
       style={{
         backgroundColor: "rgba(34,197,94,0.12)",
         border: "1px solid rgba(34,197,94,0.4)",
@@ -199,9 +199,9 @@ function StatusPill() {
       <span
         style={{
           fontFamily: "var(--font-geist-mono)",
-          fontSize: 12,
+          fontSize: 14,
           color: "#22c55e",
-          letterSpacing: "0.12em",
+          letterSpacing: "0.08em",
           textTransform: "uppercase",
           fontWeight: 600,
         }}

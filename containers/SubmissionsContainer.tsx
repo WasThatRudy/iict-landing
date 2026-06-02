@@ -11,14 +11,14 @@ import Footer from "@/components/organisms/Footer";
 const EASYCHAIR_URL = "https://easychair.org/cfp/IICT2026";
 
 export default function SubmissionsContainer() {
-  function openEasyChair() {
+  function goToUpdatesSignup() {
     if (typeof window === "undefined") return;
-    window.open(EASYCHAIR_URL, "_blank", "noopener,noreferrer");
+    window.location.href = "/#hero";
   }
 
   return (
     <main style={{ backgroundColor: "var(--color-background)" }}>
-      <Navbar onOpenModal={openEasyChair} />
+      <Navbar onOpenModal={goToUpdatesSignup} />
       <SubmissionsHero easyChairUrl={EASYCHAIR_URL} />
       <SubmissionsTracksSection easyChairUrl={EASYCHAIR_URL} />
       <SubmissionsReviewProcessSection />

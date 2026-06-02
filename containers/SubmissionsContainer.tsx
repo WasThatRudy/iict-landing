@@ -1,0 +1,30 @@
+"use client";
+
+import Navbar from "@/components/organisms/Navbar";
+import SubmissionsHero from "@/components/organisms/SubmissionsHero";
+import SubmissionsTracksSection from "@/components/organisms/SubmissionsTracksSection";
+import SubmissionsReviewProcessSection from "@/components/organisms/SubmissionsReviewProcessSection";
+import SubmissionsImportantDatesSection from "@/components/organisms/SubmissionsImportantDatesSection";
+import SubmissionsInfoSection from "@/components/organisms/SubmissionsInfoSection";
+import Footer from "@/components/organisms/Footer";
+
+const EASYCHAIR_URL = "https://easychair.org/cfp/IICT2026";
+
+export default function SubmissionsContainer() {
+  function goToUpdatesSignup() {
+    if (typeof window === "undefined") return;
+    window.location.href = "/#hero";
+  }
+
+  return (
+    <main style={{ backgroundColor: "var(--color-background)" }}>
+      <Navbar onOpenModal={goToUpdatesSignup} />
+      <SubmissionsHero easyChairUrl={EASYCHAIR_URL} />
+      <SubmissionsTracksSection easyChairUrl={EASYCHAIR_URL} />
+      <SubmissionsReviewProcessSection />
+      <SubmissionsImportantDatesSection />
+      <SubmissionsInfoSection />
+      <Footer />
+    </main>
+  );
+}

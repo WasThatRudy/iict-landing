@@ -285,10 +285,6 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
             </div>
           </div>
 
-          {/* Subtitle */}
-          <p style={{ fontFamily: "var(--font-geist-mono)", fontSize: "clamp(13px, 1.5vw, 18px)", letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
-            Coming Soon!
-          </p>
         </div>
       </div>
     </section>

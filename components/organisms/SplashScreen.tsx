@@ -209,11 +209,11 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                   fontSize: "clamp(28px, 5.6vw, 60px)",
                   letterSpacing: "0.04em",
                   lineHeight: 1.4,
-                  textShadow: "0 0 60px rgba(78,3,255,0.5)",
-                  maxWidth: "18ch",
+                  textShadow: "0 0 32px rgba(78,3,255,0.2)",
+                  maxWidth: "22ch",
                 }}
               >
-                Innovations in Compiler Technology
+                Innovations in Compiler&nbsp;Technology
               </h1>
               <p
                 className="text-center"

@@ -180,7 +180,7 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
           >
             {/* Logo */}
             <motion.div
-              className="flex flex-col items-center gap-2"
+              className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -193,39 +193,31 @@ export default function SplashScreen({ onVideoStart, onDone }: SplashScreenProps
                 className="object-contain w-[160px] md:w-[220px]"
                 priority
               />
-              <p
-                style={{
-                  fontFamily: "var(--font-bebas-neue)",
-                  fontSize: "clamp(13px, 2vw, 17px)",
-                  letterSpacing: "0.18em",
-                  color: "rgba(255,255,255,0.5)",
-                  textTransform: "uppercase",
-                }}
-              >
-                Innovations in Compiler Technology
-              </p>
             </motion.div>
 
-            {/* Welcome */}
+            {/* Title */}
             <motion.div
-              className="flex flex-col items-center gap-3"
+              className="flex flex-col items-center gap-4 px-6"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <h1
-                className="text-white text-center leading-none"
+                className="text-white text-center"
                 style={{
                   fontFamily: "var(--font-boldonse)",
-                  fontSize: "clamp(32px, 6vw, 56px)",
-                  letterSpacing: "-0.03em",
-                  textShadow: "0 0 60px rgba(78,3,255,0.5)",
+                  fontSize: "clamp(28px, 5.6vw, 60px)",
+                  letterSpacing: "0.04em",
+                  lineHeight: 1.4,
+                  textShadow: "0 0 32px rgba(78,3,255,0.2)",
                 }}
               >
-                Welcome
+                Innovations in
+                <br />
+                Compiler&nbsp;Technology
               </h1>
               <p
-                className="text-center px-6"
+                className="text-center"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
                   fontSize: "clamp(11px, 3vw, 14px)",

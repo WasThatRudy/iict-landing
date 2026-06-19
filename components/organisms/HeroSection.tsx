@@ -138,8 +138,61 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
 
             <div className="md:flex-1" />
 
-            {/* Morphing CTA */}
-            <div className="flex flex-col items-start gap-2">
+            {/* CTAs */}
+            <div className="flex flex-col items-start gap-3">
+              {/* Primary CTA: CFP Open → /submissions */}
+              <motion.a
+                href="/submissions"
+                aria-label="CFP open — submit your paper"
+                className="flex items-center overflow-hidden rounded-full focus:outline-none"
+                style={{
+                  backgroundColor: "var(--color-primary)",
+                  height: 42,
+                  width: 290,
+                  paddingLeft: 14,
+                  paddingRight: 16,
+                  boxShadow: "0 0 20px rgba(78,3,255,0.45)",
+                }}
+                whileHover={{ boxShadow: "0 0 32px rgba(78,3,255,0.85)", scale: 1.03 }}
+                transition={{ duration: 0.15 }}
+              >
+                <span className="relative flex items-center justify-center mr-2.5" style={{ width: 8, height: 8 }}>
+                  <motion.span
+                    className="absolute rounded-full"
+                    style={{ width: 8, height: 8, backgroundColor: "#ffffff" }}
+                    animate={{ scale: [1, 2.4, 1], opacity: [0.85, 0, 0.85] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                  />
+                  <span className="rounded-full" style={{ width: 8, height: 8, backgroundColor: "#ffffff" }} />
+                </span>
+                <span
+                  className="text-white"
+                  style={{
+                    fontFamily: "var(--font-bebas-neue)",
+                    fontSize: 14,
+                    letterSpacing: "0.18em",
+                    paddingRight: 10,
+                    borderRight: "1px solid rgba(255,255,255,0.28)",
+                  }}
+                >
+                  CFP OPEN
+                </span>
+                <span
+                  className="text-white"
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    fontWeight: 500,
+                    fontSize: 13,
+                    paddingLeft: 10,
+                  }}
+                >
+                  Submit Your Paper
+                </span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ marginLeft: 10 }}>
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.a>
+
               {/* Row: animated arrow (when highlighted) + morphing input/button */}
               <div className="flex items-center gap-3">
 
@@ -181,21 +234,28 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                         key="btn"
                         onClick={handleButtonClick}
                         className="flex items-center overflow-hidden rounded-full focus:outline-none"
-                        style={{ backgroundColor: "var(--color-primary)" }}
+                        style={{
+                          backgroundColor: "rgba(255,255,255,0.06)",
+                          border: "1px solid rgba(255,255,255,0.22)",
+                          backdropFilter: "blur(6px)",
+                          WebkitBackdropFilter: "blur(6px)",
+                          height: 42,
+                          width: 290,
+                        }}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.15 }}
-                        whileHover={{ boxShadow: "0 0 24px rgba(78,3,255,0.6)", scale: 1.03 }}
+                        whileHover={{ borderColor: "rgba(255,255,255,0.55)", scale: 1.03 }}
                         layout
                       >
                         <span
-                          className="flex items-center justify-center rounded-full shrink-0"
-                          style={{ width: 34, height: 34, backgroundColor: "var(--color-primary)" }}
+                          className="flex items-center justify-center rounded-full shrink-0 ml-1"
+                          style={{ width: 32, height: 32, backgroundColor: "rgba(255,255,255,0.1)" }}
                         >
                           <Image src="/assets/svgs/icon-arrow.svg" alt="" width={14} height={14} />
                         </span>
-                        <span className="pr-5 text-white" style={{ fontFamily: "var(--font-geist-mono)", fontWeight: 500, fontSize: 14 }}>
+                        <span className="px-4 text-white" style={{ fontFamily: "var(--font-geist-mono)", fontWeight: 500, fontSize: 14 }}>
                           Sign Up for Updates
                         </span>
                       </motion.button>

@@ -92,7 +92,7 @@ export default function HomeImportantDatesSection() {
                 color: "var(--color-text-primary)",
               }}
             >
-              CFP timeline
+              Key dates &amp; deadlines
             </motion.h2>
           </div>
           <motion.a

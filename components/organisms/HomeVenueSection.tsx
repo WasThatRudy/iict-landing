@@ -102,8 +102,9 @@ export default function HomeVenueSection() {
               }}
             >
               Kempegowda International Airport (BLR) is about 35&nbsp;km from campus. Bengaluru
-              has direct international and domestic connectivity. Visa-on-arrival and e-Visa
-              available for most countries.
+              has direct international and domestic connectivity. Most foreign delegates travel
+              on India&apos;s e-Conference Visa; visa-on-arrival is limited to Japan, South Korea
+              and UAE nationals.
             </motion.p>
           </div>
 

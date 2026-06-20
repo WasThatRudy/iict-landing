@@ -18,7 +18,11 @@ const ITEMS: NavItem[] = [
   { label: "Sponsors",  href: "#sponsors",  id: "sponsors" },
 ];
 
-const NAVBAR_OFFSET = 80; // existing navbar height
+// Navbar wrapper is pt-4 (16px) + 80px nav = 96px effective height.
+// The SubNav itself adds 44px while sticky.
+const NAVBAR_HEIGHT = 96;
+const SUBNAV_HEIGHT = 44;
+const SCROLL_OFFSET = NAVBAR_HEIGHT + SUBNAV_HEIGHT + 8;
 
 export default function HomeSubNav() {
   const [visible, setVisible] = useState(false);
@@ -53,7 +57,7 @@ export default function HomeSubNav() {
         const next = intersecting[0]?.target.id;
         if (next) setActive(next);
       },
-      { rootMargin: `-${NAVBAR_OFFSET + 60}px 0px -55% 0px`, threshold: [0, 0.25] }
+      { rootMargin: `-${NAVBAR_HEIGHT + SUBNAV_HEIGHT + 16}px 0px -55% 0px`, threshold: [0, 0.25] }
     );
     sections.forEach((s) => obs.observe(s));
     return () => obs.disconnect();
@@ -63,7 +67,7 @@ export default function HomeSubNav() {
     e.preventDefault();
     const target = document.getElementById(id);
     if (!target) return;
-    const top = target.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET - 8;
+    const top = target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
     window.scrollTo({ top, behavior: "smooth" });
     setActive(id);
   }
@@ -74,7 +78,7 @@ export default function HomeSubNav() {
         <motion.nav
           aria-label="Section navigation"
           className="sticky z-40"
-          style={{ top: NAVBAR_OFFSET }}
+          style={{ top: NAVBAR_HEIGHT }}
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
@@ -90,12 +94,12 @@ export default function HomeSubNav() {
             }}
           >
             <ul
-              className="mx-auto flex items-center gap-1 md:gap-2 overflow-x-auto no-scrollbar"
+              className="mx-auto flex items-center gap-0 md:gap-2 overflow-x-auto no-scrollbar"
               style={{
                 maxWidth: 1240,
-                height: 44,
-                paddingLeft: 20,
-                paddingRight: 20,
+                height: SUBNAV_HEIGHT,
+                paddingLeft: 12,
+                paddingRight: 12,
               }}
             >
               {ITEMS.map((item) => {
@@ -105,11 +109,11 @@ export default function HomeSubNav() {
                     <a
                       href={item.href}
                       onClick={(e) => handleClick(e, item.id)}
-                      className="inline-flex items-center px-3 md:px-4 h-full focus:outline-none"
+                      className="inline-flex items-center px-2.5 md:px-4 h-full focus:outline-none"
                       style={{
                         fontFamily: "var(--font-bebas-neue)",
-                        fontSize: 13,
-                        letterSpacing: "0.2em",
+                        fontSize: "clamp(11px, 2.6vw, 13px)",
+                        letterSpacing: "0.18em",
                         textTransform: "uppercase",
                         color: isActive ? "var(--color-text-primary)" : "rgba(255,255,255,0.5)",
                         borderBottom: isActive ? "2px solid var(--color-primary)" : "2px solid transparent",

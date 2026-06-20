@@ -96,7 +96,7 @@ export default function HomeKeynotesSection() {
                 color: "var(--color-text-primary)",
               }}
             >
-              Speakers to be announced.
+              Keynote lineup coming soon.
             </motion.h2>
           </div>
           <motion.a
@@ -137,7 +137,7 @@ export default function HomeKeynotesSection() {
                   border: isPlaceholder
                     ? "1px dashed rgba(255,255,255,0.12)"
                     : "1px solid rgba(255,255,255,0.06)",
-                  minHeight: 200,
+                  minHeight: 160,
                 }}
               >
                 <div className="flex items-center gap-4">

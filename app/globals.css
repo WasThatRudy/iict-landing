@@ -70,7 +70,8 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 80px;
+  /* Navbar (96px, includes pt-4 wrapper) + HomeSubNav (44px) + small breathing room */
+  scroll-margin-top: 148px;
 }
 
 .no-scrollbar {

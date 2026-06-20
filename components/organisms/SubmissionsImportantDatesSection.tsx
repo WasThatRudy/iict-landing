@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { IMPORTANT_DATES as DATES } from "@/lib/important-dates";
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 24 },
@@ -13,23 +14,6 @@ const CONTAINER = {
 };
 
 const VIEWPORT = { once: true, margin: "-80px" };
-
-interface DateRow {
-  label: string;
-  date: string;
-  isoDate: string;        // YYYY-MM-DD for "past/future" logic
-  isMilestone?: boolean;  // highlight (e.g. workshop dates)
-}
-
-// All dates use today = 2026-06-01 as the reference point.
-const DATES: DateRow[] = [
-  { label: "Submissions open",                   date: "1 June 2026",       isoDate: "2026-06-01" },
-  { label: "Submission deadline",                date: "1 July 2026",       isoDate: "2026-07-01", isMilestone: true },
-  { label: "Notification of conditional accept", date: "10 August 2026",    isoDate: "2026-08-10" },
-  { label: "90-second video due",                date: "17 August 2026",    isoDate: "2026-08-17" },
-  { label: "Final notification",                 date: "4 September 2026",  isoDate: "2026-09-04" },
-  { label: "Workshop dates",                     date: "2 – 3 October 2026", isoDate: "2026-10-02", isMilestone: true },
-];
 
 export default function SubmissionsImportantDatesSection() {
   return (

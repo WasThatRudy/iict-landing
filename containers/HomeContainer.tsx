@@ -3,7 +3,14 @@
 import { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/organisms/Navbar";
+import HomeSubNav from "@/components/organisms/HomeSubNav";
 import HeroSection, { HeroSectionHandle } from "@/components/organisms/HeroSection";
+import HomeImportantDatesSection from "@/components/organisms/HomeImportantDatesSection";
+import HomeTracksSection from "@/components/organisms/HomeTracksSection";
+import HomeKeynotesSection from "@/components/organisms/HomeKeynotesSection";
+import HomeCommitteeSection from "@/components/organisms/HomeCommitteeSection";
+import HomeVenueSection from "@/components/organisms/HomeVenueSection";
+import HomeSponsorsSection from "@/components/organisms/HomeSponsorsSection";
 import ArchiveSection from "@/components/organisms/ArchiveSection";
 import TalksSection from "@/components/organisms/TalksSection";
 import SplashScreen from "@/components/organisms/SplashScreen";
@@ -91,6 +98,13 @@ export default function HomeContainer() {
       >
         <Navbar onOpenModal={openHeroInput} />
         <HeroSection ref={heroRef} avatars={AVATARS} onOpenModal={openHeroInput} />
+        <HomeSubNav />
+        <HomeImportantDatesSection />
+        <HomeTracksSection />
+        <HomeKeynotesSection />
+        <HomeCommitteeSection />
+        <HomeVenueSection />
+        <HomeSponsorsSection />
         <VisionSection />
         <ArchiveSection />
         <TalksSection talks={TALKS_2025} talks2024={TALKS_2024} />

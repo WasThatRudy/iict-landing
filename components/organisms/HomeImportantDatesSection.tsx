@@ -33,16 +33,16 @@ function statusStyle(status: DateStatus, isMilestone?: boolean) {
   }
   if (status === "today" || isMilestone) {
     return {
-      dot: "#ff8855",
-      label: "#ff8855",
+      dot: "var(--color-accent-orange)",
+      label: "var(--color-accent-orange)",
       labelBg: "rgba(255,136,85,0.08)",
       labelBorder: "rgba(255,136,85,0.35)",
       strike: false,
     };
   }
   return {
-    dot: "#4e03ff",
-    label: "#b59bff",
+    dot: "var(--color-primary)",
+    label: "var(--color-primary-light)",
     labelBg: "rgba(78,3,255,0.1)",
     labelBorder: "rgba(78,3,255,0.35)",
     strike: false,
@@ -74,7 +74,7 @@ export default function HomeImportantDatesSection() {
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: 12,
-                color: "#ff8855",
+                color: "var(--color-accent-orange)",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
               }}
@@ -161,7 +161,7 @@ export default function HomeImportantDatesSection() {
                     style={{
                       fontFamily: "var(--font-geist-mono)",
                       fontSize: "clamp(12px, 1vw, 13px)",
-                      color: row.isMilestone ? "#ff8855" : "var(--color-text-primary)",
+                      color: row.isMilestone ? "var(--color-accent-orange)" : "var(--color-text-primary)",
                       fontWeight: 600,
                       whiteSpace: "nowrap",
                       opacity: s.strike ? 0.55 : 1,

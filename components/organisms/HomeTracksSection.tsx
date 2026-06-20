@@ -64,7 +64,7 @@ export default function HomeTracksSection() {
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: 12,
-                color: "#ff8855",
+                color: "var(--color-accent-orange)",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
               }}
@@ -132,7 +132,7 @@ export default function HomeTracksSection() {
                     fontFamily: "var(--font-bebas-neue)",
                     fontSize: 13,
                     letterSpacing: "0.2em",
-                    color: "#ff8855",
+                    color: "var(--color-accent-orange)",
                     textTransform: "uppercase",
                   }}
                 >
@@ -179,7 +179,7 @@ export default function HomeTracksSection() {
                     fontFamily: "var(--font-bebas-neue)",
                     fontSize: 13,
                     letterSpacing: "0.18em",
-                    color: "#b59bff",
+                    color: "var(--color-primary-light)",
                   }}
                 >
                   Submit →

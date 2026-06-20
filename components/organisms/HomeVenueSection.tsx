@@ -54,7 +54,7 @@ export default function HomeVenueSection() {
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: 12,
-                color: "#ff8855",
+                color: "var(--color-accent-orange)",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
               }}
@@ -127,7 +127,7 @@ export default function HomeVenueSection() {
                   fontFamily: "var(--font-bebas-neue)",
                   fontSize: 12,
                   letterSpacing: "0.22em",
-                  color: "#b59bff",
+                  color: "var(--color-primary-light)",
                   textTransform: "uppercase",
                 }}
               >

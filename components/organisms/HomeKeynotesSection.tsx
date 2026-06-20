@@ -78,7 +78,7 @@ export default function HomeKeynotesSection() {
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: 12,
-                color: "#ff8855",
+                color: "var(--color-accent-orange)",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
               }}

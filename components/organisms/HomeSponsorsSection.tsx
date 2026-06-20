@@ -49,7 +49,7 @@ export default function HomeSponsorsSection() {
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: 12,
-                color: "#ff8855",
+                color: "var(--color-accent-orange)",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
               }}
@@ -174,7 +174,7 @@ export default function HomeSponsorsSection() {
                     fontFamily: "var(--font-bebas-neue)",
                     fontSize: 13,
                     letterSpacing: "0.22em",
-                    color: "#b59bff",
+                    color: "var(--color-primary-light)",
                     textTransform: "uppercase",
                   }}
                 >

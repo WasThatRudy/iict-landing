@@ -16,6 +16,9 @@ const ITEMS: NavItem[] = [
   { label: "Committee", href: "#committee", id: "committee" },
   { label: "Venue",     href: "#venue",     id: "venue" },
   { label: "Sponsors",  href: "#sponsors",  id: "sponsors" },
+  { label: "Vision",    href: "#vision",    id: "vision" },
+  { label: "Recap",     href: "#recap",     id: "recap" },
+  { label: "Archive",   href: "#archive",   id: "archive" },
 ];
 
 // Navbar wrapper is pt-4 (16px) + 80px nav = 96px effective height.
@@ -94,7 +97,7 @@ export default function HomeSubNav() {
             }}
           >
             <ul
-              className="mx-auto flex items-center gap-0 md:gap-2 overflow-x-auto no-scrollbar"
+              className="mx-auto flex items-center justify-start md:justify-center gap-0 md:gap-2 overflow-x-auto no-scrollbar"
               style={{
                 maxWidth: 1240,
                 height: SUBNAV_HEIGHT,

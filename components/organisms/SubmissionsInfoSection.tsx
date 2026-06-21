@@ -271,21 +271,17 @@ export default function SubmissionsInfoSection() {
               </li>
             ))}
           </ul>
-          <a
-            href="/committee#program-committee"
+          <p
             style={{
               fontFamily: "var(--font-geist-mono)",
               fontSize: 12,
-              color: "var(--color-accent-orange)",
+              color: "#ff8855",
               letterSpacing: "0.04em",
               opacity: 0.95,
-              borderBottom: "1px solid rgba(255,136,85,0.4)",
-              paddingBottom: 2,
-              alignSelf: "flex-start",
             }}
           >
-            Program Committee · 23 members →
-          </a>
+            Program Committee · to be announced
+          </p>
         </motion.div>
       </div>
     </section>

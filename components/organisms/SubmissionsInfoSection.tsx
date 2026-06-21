@@ -284,7 +284,7 @@ export default function SubmissionsInfoSection() {
               alignSelf: "flex-start",
             }}
           >
-            Program Committee · 23 members →
+            See full Program Committee →
           </a>
         </motion.div>
       </div>

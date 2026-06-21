@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { IMPORTANT_DATES, dateStatus, type DateStatus } from "@/lib/important-dates";
+import { IMPORTANT_DATES, dateStatus } from "@/lib/important-dates";
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 16 },
@@ -10,47 +10,27 @@ const FADE_UP = {
 
 const CONTAINER = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.04 } },
+  show: { transition: { staggerChildren: 0.06 } },
 };
 
 const VIEWPORT = { once: true, margin: "-80px" };
 
-const STATUS_LABEL: Record<DateStatus, string> = {
-  past: "Closed",
-  today: "Today",
-  upcoming: "Upcoming",
-};
-
-function statusStyle(status: DateStatus, isMilestone?: boolean) {
-  if (status === "past") {
-    return {
-      dot: "rgba(255,255,255,0.18)",
-      label: "rgba(255,255,255,0.4)",
-      labelBg: "rgba(255,255,255,0.04)",
-      labelBorder: "rgba(255,255,255,0.08)",
-      strike: true,
-    };
-  }
-  if (status === "today" || isMilestone) {
-    return {
-      dot: "var(--color-accent-orange)",
-      label: "var(--color-accent-orange)",
-      labelBg: "rgba(255,136,85,0.08)",
-      labelBorder: "rgba(255,136,85,0.35)",
-      strike: false,
-    };
-  }
-  return {
-    dot: "var(--color-primary)",
-    label: "var(--color-primary-light)",
-    labelBg: "rgba(78,3,255,0.1)",
-    labelBorder: "rgba(78,3,255,0.35)",
-    strike: false,
-  };
-}
+// Two-colour system:
+//   accent  (var(--color-primary)) = the path ahead — progress rail, the next
+//                                     milestone, and future markers
+//   neutral (white / greys)        = everything done, plus all body text
+type Role = "done" | "next" | "future";
 
 export default function HomeImportantDatesSection() {
   const today = new Date(2026, 5, 20); // 2026-06-20; pinned to keep status deterministic per build
+
+  // The "next" item is the first one that hasn't passed yet.
+  const nextIndex = IMPORTANT_DATES.findIndex(
+    (row) => dateStatus(row.isoDate, today) !== "past",
+  );
+
+  const roleFor = (i: number): Role =>
+    i < nextIndex ? "done" : i === nextIndex ? "next" : "future";
 
   return (
     <section
@@ -61,7 +41,7 @@ export default function HomeImportantDatesSection() {
       <div className="mx-auto" style={{ maxWidth: 1240 }}>
         {/* Header row */}
         <motion.div
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10"
           variants={CONTAINER}
           initial="hidden"
           whileInView="show"
@@ -74,7 +54,7 @@ export default function HomeImportantDatesSection() {
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: 12,
-                color: "var(--color-accent-orange)",
+                color: "var(--color-primary-light)",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
               }}
@@ -113,80 +93,141 @@ export default function HomeImportantDatesSection() {
           </motion.a>
         </motion.div>
 
-        {/* Horizontal scroll strip on small screens, grid on md+ */}
-        <motion.ul
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
+        {/* Horizontal timeline (scrolls on small screens) */}
+        <motion.ol
+          className="relative flex overflow-x-auto pb-2"
           variants={CONTAINER}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
+          style={{ scrollbarWidth: "none" }}
         >
-          {IMPORTANT_DATES.map((row) => {
-            const status = dateStatus(row.isoDate, today);
-            const s = statusStyle(status, row.isMilestone);
+          {IMPORTANT_DATES.map((row, i) => {
+            const role = roleFor(i);
+            const isLast = i === IMPORTANT_DATES.length - 1;
+            const done = role === "done";
+            const next = role === "next";
+
+            // The rail segment to the right of a node is "travelled" (accent)
+            // up to the next marker; everything beyond it stays neutral.
+            const segmentTravelled = i < nextIndex;
+
             return (
               <motion.li
                 key={row.label}
                 variants={FADE_UP}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="flex flex-col gap-3 rounded-2xl px-5 py-5"
-                style={{
-                  backgroundColor: row.isMilestone ? "rgba(255,136,85,0.04)" : "rgba(255,255,255,0.025)",
-                  border: `1px solid ${s.labelBorder}`,
-                  borderLeftWidth: 3,
-                }}
+                className="relative flex flex-col shrink-0"
+                style={{ flex: "1 1 0", minWidth: 184, paddingRight: isLast ? 0 : 14 }}
               >
-                <div className="flex items-center justify-between gap-3">
-                  <span
-                    className="inline-flex items-center gap-2"
-                  >
-                    <span className="rounded-full" style={{ width: 8, height: 8, backgroundColor: s.dot }} />
+                {/* Rail + node */}
+                <div className="relative" style={{ height: 16, marginBottom: 16 }}>
+                  {/* connecting line to the right of this node */}
+                  {!isLast && (
                     <span
+                      aria-hidden
+                      className="absolute"
                       style={{
-                        fontFamily: "var(--font-geist-mono)",
-                        fontSize: 10.5,
-                        letterSpacing: "0.16em",
-                        textTransform: "uppercase",
-                        color: s.label,
-                        backgroundColor: s.labelBg,
-                        border: `1px solid ${s.labelBorder}`,
-                        padding: "2px 8px",
-                        borderRadius: 999,
+                        top: 7,
+                        left: 16,
+                        right: 0,
+                        height: 2,
+                        backgroundColor: segmentTravelled
+                          ? "var(--color-primary)"
+                          : "rgba(255,255,255,0.1)",
                       }}
-                    >
-                      {STATUS_LABEL[status]}
-                    </span>
+                    />
+                  )}
+                  {/* node */}
+                  <span
+                    className="absolute flex items-center justify-center"
+                    style={{ left: 0, top: 0, width: 16, height: 16 }}
+                  >
+                    {next && (
+                      <motion.span
+                        aria-hidden
+                        className="absolute rounded-full"
+                        style={{ width: 16, height: 16, backgroundColor: "var(--color-primary)" }}
+                        animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
+                      />
+                    )}
+                    <span
+                      className="rounded-full"
+                      style={{
+                        width: next ? 14 : 11,
+                        height: next ? 14 : 11,
+                        backgroundColor: next
+                          ? "var(--color-primary)"
+                          : done
+                            ? "rgba(255,255,255,0.28)"
+                            : "transparent",
+                        border: next || done ? "none" : "2px solid var(--color-primary)",
+                        boxShadow: next ? "0 0 14px rgba(78,3,255,0.6)" : "none",
+                      }}
+                    />
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div
+                  className="flex flex-col gap-2 rounded-xl px-4 py-4 h-full"
+                  style={{
+                    backgroundColor: next ? "rgba(78,3,255,0.07)" : "rgba(255,255,255,0.02)",
+                    border: next
+                      ? "1px solid rgba(78,3,255,0.4)"
+                      : "1px solid rgba(255,255,255,0.07)",
+                    opacity: done ? 0.6 : 1,
+                  }}
+                >
+                  <span
+                    className="self-start"
+                    style={{
+                      fontFamily: "var(--font-bebas-neue)",
+                      fontSize: 12.5,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      color: done ? "rgba(255,255,255,0.45)" : "var(--color-primary-light)",
+                      backgroundColor: done ? "rgba(255,255,255,0.05)" : "rgba(78,3,255,0.12)",
+                      border: done
+                        ? "1px solid rgba(255,255,255,0.1)"
+                        : "1px solid rgba(78,3,255,0.4)",
+                      padding: "2px 9px",
+                      borderRadius: 999,
+                    }}
+                  >
+                    {done ? "Closed" : next ? "Next up" : "Upcoming"}
                   </span>
                   <span
                     style={{
                       fontFamily: "var(--font-geist-mono)",
                       fontSize: "clamp(12px, 1vw, 13px)",
-                      color: row.isMilestone ? "var(--color-accent-orange)" : "var(--color-text-primary)",
+                      color: done ? "rgba(255,255,255,0.5)" : "var(--color-text-primary)",
                       fontWeight: 600,
                       whiteSpace: "nowrap",
-                      opacity: s.strike ? 0.55 : 1,
-                      textDecoration: s.strike ? "line-through" : "none",
+                      textDecoration: done ? "line-through" : "none",
                     }}
                   >
                     {row.date}
                   </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "clamp(13px, 1.15vw, 15px)",
+                      letterSpacing: "0.01em",
+                      lineHeight: 1.3,
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      color: "var(--color-text-primary)",
+                    }}
+                  >
+                    {row.label}
+                  </span>
                 </div>
-                <span
-                  style={{
-                    fontFamily: "var(--font-bebas-neue)",
-                    fontSize: "clamp(18px, 1.7vw, 22px)",
-                    letterSpacing: "0.04em",
-                    lineHeight: 1.2,
-                    color: "var(--color-text-primary)",
-                    opacity: s.strike ? 0.55 : 1,
-                  }}
-                >
-                  {row.label}
-                </span>
               </motion.li>
             );
           })}
-        </motion.ul>
+        </motion.ol>
       </div>
     </section>
   );

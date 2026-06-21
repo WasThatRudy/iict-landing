@@ -9,7 +9,10 @@ interface CommitteeMemberCardProps {
 }
 
 export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps) {
-  const role = member.position.replace(/[()]/g, "");
+  const role = member.position.replace(/[()]/g, "").trim();
+  // Hide the role pill for plain "PC Member" / "SC Member" — the section
+  // header already says it. Keep it for distinguishing roles (Chair, Co-chair, etc.).
+  const showRolePill = !/member$/i.test(role);
   // Committee SVGs ship with an 8px drop-shadow ring on a 116×116 canvas
   // (inner photo is 100×100). Scale them up to crop the ring so the photo
   // reaches the card edges. WebP photos render full-bleed and need no scaling.
@@ -54,30 +57,32 @@ export default function CommitteeMemberCard({ member }: CommitteeMemberCardProps
               "linear-gradient(180deg, rgba(7,7,8,0) 0%, rgba(7,7,8,0.55) 100%)",
           }}
         />
-        {/* Role pill */}
-        <span
-          className="absolute top-2 right-2 inline-flex items-center rounded-full px-2 py-0.5"
-          style={{
-            backgroundColor: "rgba(7,7,8,0.7)",
-            backdropFilter: "blur(6px)",
-            WebkitBackdropFilter: "blur(6px)",
-            border: "1px solid rgba(255,136,85,0.45)",
-          }}
-        >
+        {/* Role pill — only for distinguishing roles (Chair, Co-chair, etc.) */}
+        {showRolePill && (
           <span
+            className="absolute top-2 right-2 inline-flex items-center rounded-full px-2 py-0.5"
             style={{
-              fontFamily: "var(--font-geist-mono)",
-              fontSize: 10,
-              color: "#ff8855",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              fontWeight: 600,
-              whiteSpace: "nowrap",
+              backgroundColor: "rgba(7,7,8,0.7)",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
+              border: "1px solid rgba(255,136,85,0.45)",
             }}
           >
-            {role}
+            <span
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: 10,
+                color: "var(--color-accent-orange)",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {role}
+            </span>
           </span>
-        </span>
+        )}
       </div>
 
       {/* Body */}

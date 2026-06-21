@@ -144,7 +144,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
               <motion.a
                 href="/submissions"
                 aria-label="CFP open — submit your paper"
-                className="flex items-center overflow-hidden rounded-full focus:outline-none"
+                className="flex items-center justify-center overflow-hidden rounded-full focus:outline-none"
                 style={{
                   backgroundColor: "var(--color-primary)",
                   height: 42,
@@ -156,15 +156,6 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                 whileHover={{ boxShadow: "0 0 32px rgba(78,3,255,0.85)", scale: 1.03 }}
                 transition={{ duration: 0.15 }}
               >
-                <span className="relative flex items-center justify-center mr-2.5" style={{ width: 8, height: 8 }}>
-                  <motion.span
-                    className="absolute rounded-full"
-                    style={{ width: 8, height: 8, backgroundColor: "#ffffff" }}
-                    animate={{ scale: [1, 2.4, 1], opacity: [0.85, 0, 0.85] }}
-                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-                  />
-                  <span className="rounded-full" style={{ width: 8, height: 8, backgroundColor: "#ffffff" }} />
-                </span>
                 <span
                   className="text-white"
                   style={{
@@ -292,7 +283,7 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                           backdropFilter: "blur(8px)",
                         }}
                         initial={{ opacity: 0, width: 42 }}
-                        animate={{ opacity: 1, width: "auto" }}
+                        animate={{ opacity: 1, width: 290 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                       >
@@ -303,8 +294,8 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
                           placeholder="your@email.com"
                           value={email}
                           onChange={(e) => { setEmail(e.target.value); if (inputState === "error") setInputState("open"); }}
-                          className="bg-transparent text-white placeholder:text-white/30 outline-none pl-5 pr-2"
-                          style={{ fontFamily: "var(--font-geist-mono)", fontSize: 13, width: "clamp(180px, 22vw, 260px)", height: 42 }}
+                          className="flex-1 min-w-0 bg-transparent text-white placeholder:text-white/30 outline-none pl-5 pr-2"
+                          style={{ fontFamily: "var(--font-geist-mono)", fontSize: 13, height: 42 }}
                         />
                         <motion.button
                           type="submit"

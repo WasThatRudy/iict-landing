@@ -18,6 +18,8 @@
   /* Brand colors */
   --color-primary: #4e03ff;
   --color-primary-hover: #3d00cc;
+  --color-primary-light: #b59bff;
+  --color-accent-orange: #ff8855;
 
   /* Border */
   --color-border-subtle: rgba(250, 250, 250, 0.05);
@@ -29,6 +31,8 @@
   --color-text-secondary: #a3a3a3;
   --color-primary: #4e03ff;
   --color-primary-hover: #3d00cc;
+  --color-primary-light: #b59bff;
+  --color-accent-orange: #ff8855;
   --color-border-subtle: rgba(250, 250, 250, 0.05);
 }
 
@@ -66,7 +70,15 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 80px;
+  /* Navbar (96px, includes pt-4 wrapper) + HomeSubNav (44px) + small breathing room */
+  scroll-margin-top: 148px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 html,

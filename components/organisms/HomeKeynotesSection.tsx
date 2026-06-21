@@ -145,7 +145,7 @@ export default function HomeKeynotesSection() {
                   <div className="flex flex-col gap-1">
                     <span
                       style={{
-                        fontFamily: "var(--font-boldonse)",
+                        fontFamily: "var(--font-geist-mono)",
                         fontSize: "clamp(15px, 1.3vw, 18px)",
                         letterSpacing: "-0.01em",
                         lineHeight: 1.25,
@@ -180,9 +180,9 @@ export default function HomeKeynotesSection() {
                   </span>
                   <span
                     style={{
-                      fontFamily: "var(--font-bebas-neue)",
-                      fontSize: "clamp(15px, 1.4vw, 18px)",
-                      letterSpacing: "0.04em",
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "clamp(14px, 1.3vw, 16px)",
+                      letterSpacing: "0.02em",
                       lineHeight: 1.3,
                       color: "var(--color-text-primary)",
                       opacity: isPlaceholder ? 0.5 : 1,

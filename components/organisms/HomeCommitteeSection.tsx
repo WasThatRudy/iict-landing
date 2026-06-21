@@ -121,8 +121,8 @@ export default function HomeCommitteeSection() {
               </span>
               <span
                 style={{
-                  fontFamily: "var(--font-boldonse)",
-                  fontSize: "clamp(18px, 1.5vw, 22px)",
+                  fontFamily: "var(--font-geist-mono)",
+                  fontSize: "clamp(16px, 1.3vw, 19px)",
                   letterSpacing: "-0.01em",
                   lineHeight: 1.25,
                   color: "var(--color-text-primary)",

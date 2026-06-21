@@ -182,10 +182,10 @@ export default function HomeSponsorsSection() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "var(--font-boldonse)",
-                    fontSize: "clamp(22px, 2.4vw, 32px)",
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "clamp(18px, 2vw, 26px)",
                     letterSpacing: "-0.02em",
-                    lineHeight: 1.15,
+                    lineHeight: 1.25,
                     color: "var(--color-text-primary)",
                   }}
                 >

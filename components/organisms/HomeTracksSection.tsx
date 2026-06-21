@@ -76,7 +76,7 @@ export default function HomeTracksSection() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               style={{
                 fontFamily: "var(--font-boldonse)",
-                fontSize: "clamp(28px, 3.4vw, 44px)",
+                fontSize: "clamp(24px, 2.8vw, 36px)",
                 letterSpacing: "-0.02em",
                 lineHeight: 1.1,
                 color: "var(--color-text-primary)",
@@ -140,10 +140,10 @@ export default function HomeTracksSection() {
                 </span>
                 <h3
                   style={{
-                    fontFamily: "var(--font-boldonse)",
-                    fontSize: "clamp(18px, 1.6vw, 22px)",
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "clamp(13px, 1.05vw, 15px)",
                     letterSpacing: "-0.01em",
-                    lineHeight: 1.3,
+                    lineHeight: 1.5,
                     color: "var(--color-text-primary)",
                   }}
                 >

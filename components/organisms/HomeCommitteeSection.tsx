@@ -9,12 +9,12 @@ interface Chair {
 }
 
 const CHAIRS: Chair[] = [
-  { role: "General Chair",   name: "Ashutosh Pandey",        affiliation: "AMD" },
-  { role: "PC Chair",        name: "R Govindarajan",         affiliation: "IISc, Bangalore" },
-  { role: "PC Chair",        name: "Ramana Radhakrishnan",   affiliation: "NVIDIA" },
-  { role: "Co-chair",        name: "Pradeep Kumar",          affiliation: "NVIDIA" },
-  { role: "Co-chair",        name: "Prerona Chaudhuri",      affiliation: "NVIDIA" },
-  { role: "Co-chair",        name: "Dr. Raveendra Kumar",    affiliation: "TCS Research" },
+  { role: "PC Chair",         name: "R Govindarajan",         affiliation: "IISc, Bangalore" },
+  { role: "PC Chair",         name: "Ramana Radhakrishnan",   affiliation: "NVIDIA" },
+  { role: "Organizing Chair", name: "Ashutosh Pandey",        affiliation: "AMD" },
+  { role: "OC Co-chair",      name: "Pradeep Kumar",          affiliation: "NVIDIA" },
+  { role: "OC Co-chair",      name: "Prerona Chaudhuri",      affiliation: "NVIDIA" },
+  { role: "OC Co-chair",      name: "Dr. Raveendra Kumar",    affiliation: "TCS Research" },
 ];
 
 const FADE_UP = {

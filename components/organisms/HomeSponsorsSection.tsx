@@ -116,22 +116,22 @@ export default function HomeSponsorsSection() {
               if (inTier.length === 0) return null;
               return (
                 <div key={tier} className="flex flex-col gap-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <motion.span
                       style={{
                         fontFamily: "var(--font-bebas-neue)",
-                        fontSize: 16,
-                        letterSpacing: "0.28em",
+                        fontSize: "clamp(28px, 3.4vw, 44px)",
+                        letterSpacing: "0.24em",
                         textTransform: "uppercase",
-                        fontWeight: 600,
+                        fontWeight: 700,
                         background: TIER_GRADIENT[tier],
                         backgroundSize: "200% auto",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
                         display: "inline-block",
-                        lineHeight: 1.2,
-                        paddingBottom: "0.1em",
+                        lineHeight: 1.05,
+                        paddingBottom: "0.08em",
                       }}
                       animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
                       transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
@@ -142,10 +142,11 @@ export default function HomeSponsorsSection() {
                       aria-hidden="true"
                       style={{
                         flex: 1,
-                        maxWidth: 96,
-                        height: 1,
+                        maxWidth: 160,
+                        height: 2,
                         background: TIER_GRADIENT[tier],
                         opacity: 0.55,
+                        borderRadius: 999,
                       }}
                     />
                   </div>

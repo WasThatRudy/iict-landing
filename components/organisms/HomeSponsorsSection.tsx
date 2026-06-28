@@ -172,30 +172,10 @@ export default function HomeSponsorsSection() {
                           href={s.href ?? "/sponsorships"}
                           target={s.href ? "_blank" : undefined}
                           rel={s.href ? "noopener noreferrer" : undefined}
-                          className="relative block"
-                          style={{
-                            padding: "10px 18px",
-                            borderRadius: 14,
-                            backgroundColor: "rgba(255,255,255,0.02)",
-                            border: "1px solid rgba(181,155,255,0.18)",
-                          }}
-                          whileHover={{
-                            backgroundColor: "rgba(255,255,255,0.04)",
-                            borderColor: "rgba(181,155,255,0.45)",
-                            scale: 1.02,
-                          }}
+                          className="block"
+                          whileHover={{ scale: 1.03 }}
                           transition={{ duration: 0.25, ease: "easeOut" }}
                         >
-                          {/* Soft brand-purple halo around the logo */}
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0 pointer-events-none"
-                            style={{
-                              borderRadius: 14,
-                              background:
-                                "radial-gradient(ellipse at center, rgba(78,3,255,0.22) 0%, rgba(7,7,8,0) 70%)",
-                            }}
-                          />
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={s.src}
@@ -203,7 +183,6 @@ export default function HomeSponsorsSection() {
                             style={{
                               height: TIER_HEIGHT[tier],
                               display: "block",
-                              position: "relative",
                               filter: TIER_GLOW[tier],
                             }}
                           />

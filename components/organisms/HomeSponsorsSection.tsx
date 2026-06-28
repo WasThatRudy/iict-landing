@@ -9,6 +9,19 @@ interface SponsorLogo {
   tier: "platinum" | "gold" | "silver";
 }
 
+// Metallic-gradient stops per tier, used for animated shimmer on the label.
+const TIER_GRADIENT: Record<SponsorLogo["tier"], string> = {
+  platinum: "linear-gradient(95deg, #e9def8 0%, #ffffff 25%, #b59bff 50%, #ffffff 75%, #e9def8 100%)",
+  gold:     "linear-gradient(95deg, #d4a44a 0%, #ffe89a 25%, #b88827 50%, #ffe89a 75%, #d4a44a 100%)",
+  silver:   "linear-gradient(95deg, #b8b8c2 0%, #ffffff 25%, #9a9aa4 50%, #ffffff 75%, #b8b8c2 100%)",
+};
+
+const TIER_GLOW: Record<SponsorLogo["tier"], string> = {
+  platinum: "drop-shadow(0 0 32px rgba(78,3,255,0.45)) drop-shadow(0 0 10px rgba(181,155,255,0.35))",
+  gold:     "drop-shadow(0 0 24px rgba(255,184,40,0.35))",
+  silver:   "drop-shadow(0 0 16px rgba(200,200,210,0.25))",
+};
+
 // 2026 sponsors. NVIDIA returns as Platinum Sponsor.
 const SPONSORS: SponsorLogo[] = [
   {
@@ -109,17 +122,39 @@ export default function HomeSponsorsSection() {
               if (inTier.length === 0) return null;
               return (
                 <div key={tier} className="flex flex-col gap-4">
-                  <span
-                    style={{
-                      fontFamily: "var(--font-bebas-neue)",
-                      fontSize: 13,
-                      letterSpacing: "0.22em",
-                      color: "var(--color-primary-light)",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {tier}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <motion.span
+                      style={{
+                        fontFamily: "var(--font-bebas-neue)",
+                        fontSize: 16,
+                        letterSpacing: "0.28em",
+                        textTransform: "uppercase",
+                        fontWeight: 600,
+                        background: TIER_GRADIENT[tier],
+                        backgroundSize: "200% auto",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        display: "inline-block",
+                        lineHeight: 1.2,
+                        paddingBottom: "0.1em",
+                      }}
+                      animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                    >
+                      {tier}
+                    </motion.span>
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        flex: 1,
+                        maxWidth: 96,
+                        height: 1,
+                        background: TIER_GRADIENT[tier],
+                        opacity: 0.55,
+                      }}
+                    />
+                  </div>
                   <motion.ul
                     className="flex flex-wrap items-center gap-10 md:gap-14"
                     variants={CONTAINER}
@@ -133,16 +168,46 @@ export default function HomeSponsorsSection() {
                         variants={FADE_UP}
                         transition={{ duration: 0.4 }}
                       >
-                        <a
+                        <motion.a
                           href={s.href ?? "/sponsorships"}
                           target={s.href ? "_blank" : undefined}
                           rel={s.href ? "noopener noreferrer" : undefined}
-                          className="block"
-                          style={{ transition: "opacity 0.25s ease" }}
+                          className="relative block"
+                          style={{
+                            padding: "10px 18px",
+                            borderRadius: 14,
+                            backgroundColor: "rgba(255,255,255,0.02)",
+                            border: "1px solid rgba(181,155,255,0.18)",
+                          }}
+                          whileHover={{
+                            backgroundColor: "rgba(255,255,255,0.04)",
+                            borderColor: "rgba(181,155,255,0.45)",
+                            scale: 1.02,
+                          }}
+                          transition={{ duration: 0.25, ease: "easeOut" }}
                         >
+                          {/* Soft brand-purple halo around the logo */}
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0 pointer-events-none"
+                            style={{
+                              borderRadius: 14,
+                              background:
+                                "radial-gradient(ellipse at center, rgba(78,3,255,0.22) 0%, rgba(7,7,8,0) 70%)",
+                            }}
+                          />
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={s.src} alt={s.name} style={{ height: TIER_HEIGHT[tier], display: "block" }} />
-                        </a>
+                          <img
+                            src={s.src}
+                            alt={s.name}
+                            style={{
+                              height: TIER_HEIGHT[tier],
+                              display: "block",
+                              position: "relative",
+                              filter: TIER_GLOW[tier],
+                            }}
+                          />
+                        </motion.a>
                       </motion.li>
                     ))}
                   </motion.ul>

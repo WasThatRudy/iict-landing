@@ -16,12 +16,6 @@ const TIER_GRADIENT: Record<SponsorLogo["tier"], string> = {
   silver:   "linear-gradient(95deg, #b8b8c2 0%, #ffffff 25%, #9a9aa4 50%, #ffffff 75%, #b8b8c2 100%)",
 };
 
-const TIER_GLOW: Record<SponsorLogo["tier"], string> = {
-  platinum: "drop-shadow(0 0 32px rgba(78,3,255,0.45)) drop-shadow(0 0 10px rgba(181,155,255,0.35))",
-  gold:     "drop-shadow(0 0 24px rgba(255,184,40,0.35))",
-  silver:   "drop-shadow(0 0 16px rgba(200,200,210,0.25))",
-};
-
 // 2026 sponsors. NVIDIA returns as Platinum Sponsor.
 const SPONSORS: SponsorLogo[] = [
   {
@@ -183,7 +177,6 @@ export default function HomeSponsorsSection() {
                             style={{
                               height: TIER_HEIGHT[tier],
                               display: "block",
-                              filter: TIER_GLOW[tier],
                             }}
                           />
                         </motion.a>

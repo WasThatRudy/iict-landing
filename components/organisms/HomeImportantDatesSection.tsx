@@ -22,7 +22,7 @@ const VIEWPORT = { once: true, margin: "-80px" };
 type Role = "done" | "next" | "future";
 
 export default function HomeImportantDatesSection() {
-  const today = new Date(2026, 5, 20); // 2026-06-20; pinned to keep status deterministic per build
+  const today = new Date(2026, 5, 30); // 2026-06-30; pinned to keep status deterministic per build
 
   // The "next" item is the first one that hasn't passed yet.
   const nextIndex = IMPORTANT_DATES.findIndex(
@@ -198,18 +198,64 @@ export default function HomeImportantDatesSection() {
                   >
                     {done ? "Closed" : next ? "Next up" : "Upcoming"}
                   </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-geist-mono)",
-                      fontSize: "clamp(12px, 1vw, 13px)",
-                      color: done ? "rgba(255,255,255,0.5)" : "var(--color-text-primary)",
-                      fontWeight: 600,
-                      whiteSpace: "nowrap",
-                      textDecoration: done ? "line-through" : "none",
-                    }}
-                  >
-                    {row.date}
-                  </span>
+                  {row.previousDate ? (
+                    <div className="flex flex-col gap-1">
+                      <span
+                        style={{
+                          fontFamily: "var(--font-geist-mono)",
+                          fontSize: "clamp(11px, 0.9vw, 12px)",
+                          color: "rgba(255,255,255,0.4)",
+                          textDecoration: "line-through",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {row.previousDate}
+                      </span>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span
+                          style={{
+                            fontFamily: "var(--font-geist-mono)",
+                            fontSize: "clamp(12px, 1vw, 13px)",
+                            color: done ? "rgba(255,255,255,0.5)" : "var(--color-text-primary)",
+                            fontWeight: 600,
+                            textDecoration: done ? "line-through" : "none",
+                          }}
+                        >
+                          {row.date}
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "var(--font-bebas-neue)",
+                            fontSize: 10,
+                            letterSpacing: "0.18em",
+                            textTransform: "uppercase",
+                            fontWeight: 600,
+                            color: "var(--color-accent-orange)",
+                            padding: "2px 7px",
+                            borderRadius: 999,
+                            backgroundColor: "rgba(255,136,85,0.1)",
+                            border: "1px solid rgba(255,136,85,0.5)",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          Extended
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <span
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        fontSize: "clamp(12px, 1vw, 13px)",
+                        color: done ? "rgba(255,255,255,0.5)" : "var(--color-text-primary)",
+                        fontWeight: 600,
+                        whiteSpace: "nowrap",
+                        textDecoration: done ? "line-through" : "none",
+                      }}
+                    >
+                      {row.date}
+                    </span>
+                  )}
                   <span
                     style={{
                       fontFamily: "var(--font-geist-mono)",

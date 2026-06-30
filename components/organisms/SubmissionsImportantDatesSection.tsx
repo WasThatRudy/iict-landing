@@ -122,18 +122,63 @@ export default function SubmissionsImportantDatesSection() {
                   {row.label}
                 </span>
               </div>
-              <span
-                style={{
-                  fontFamily: "var(--font-geist-mono)",
-                  fontSize: "clamp(13px, 1.1vw, 15px)",
-                  color: row.isMilestone ? "#ff8855" : "var(--color-text-primary)",
-                  letterSpacing: "-0.01em",
-                  fontWeight: 600,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {row.date}
-              </span>
+              {row.previousDate ? (
+                <div className="flex flex-col items-end gap-1">
+                  <span
+                    style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "clamp(11px, 0.95vw, 13px)",
+                      color: "rgba(255,255,255,0.4)",
+                      textDecoration: "line-through",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {row.previousDate}
+                  </span>
+                  <div className="flex flex-wrap items-center gap-2 justify-end">
+                    <span
+                      style={{
+                        fontFamily: "var(--font-bebas-neue)",
+                        fontSize: 10,
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        fontWeight: 700,
+                        color: "var(--color-accent-orange)",
+                        padding: "2px 7px",
+                        borderRadius: 999,
+                        backgroundColor: "rgba(255,136,85,0.1)",
+                        border: "1px solid rgba(255,136,85,0.5)",
+                      }}
+                    >
+                      Extended
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        fontSize: "clamp(13px, 1.1vw, 15px)",
+                        color: row.isMilestone ? "var(--color-accent-orange)" : "var(--color-text-primary)",
+                        letterSpacing: "-0.01em",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {row.date}
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <span
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    fontSize: "clamp(13px, 1.1vw, 15px)",
+                    color: row.isMilestone ? "var(--color-accent-orange)" : "var(--color-text-primary)",
+                    letterSpacing: "-0.01em",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {row.date}
+                </span>
+              )}
             </motion.div>
           ))}
         </motion.div>

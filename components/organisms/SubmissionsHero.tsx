@@ -165,7 +165,13 @@ export default function SubmissionsHero({ easyChairUrl }: SubmissionsHeroProps) 
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
         >
           <DateChip icon="/assets/svgs/icon-calendar.svg" label="Submissions open" value="1 Jun 2026" />
-          <DateChip icon="/assets/svgs/icon-calendar.svg" label="Submission deadline" value="1 Jul 2026" highlight />
+          <DateChip
+            icon="/assets/svgs/icon-calendar.svg"
+            label="Submission deadline"
+            value="8 Jul 2026, 11:59 PM IST"
+            previousValue="1 Jul 2026"
+            highlight
+          />
           <DateChip icon="/assets/svgs/icon-location.svg" label="Workshop" value="2 – 3 Oct 2026 · IISc" />
         </motion.div>
       </motion.div>
@@ -217,9 +223,11 @@ interface DateChipProps {
   label: string;
   value: string;
   highlight?: boolean;
+  // When set, rendered struck-through above `value` with an "Extended" pill.
+  previousValue?: string;
 }
 
-function DateChip({ icon, label, value, highlight }: DateChipProps) {
+function DateChip({ icon, label, value, highlight, previousValue }: DateChipProps) {
   return (
     <motion.div
       variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
@@ -243,7 +251,7 @@ function DateChip({ icon, label, value, highlight }: DateChipProps) {
           style={{
             fontFamily: "var(--font-geist-mono)",
             fontSize: 11,
-            color: "#ff8855",
+            color: "var(--color-accent-orange)",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             fontWeight: 600,
@@ -252,17 +260,62 @@ function DateChip({ icon, label, value, highlight }: DateChipProps) {
           {label}
         </span>
       </div>
-      <span
-        style={{
-          fontFamily: "var(--font-geist-mono)",
-          fontSize: 14,
-          color: "var(--color-text-primary)",
-          letterSpacing: "-0.01em",
-          fontWeight: 600,
-        }}
-      >
-        {value}
-      </span>
+      {previousValue ? (
+        <div className="flex flex-col gap-1">
+          <span
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: 12,
+              color: "rgba(255,255,255,0.4)",
+              textDecoration: "line-through",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {previousValue}
+          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                fontSize: 14,
+                color: "var(--color-text-primary)",
+                letterSpacing: "-0.01em",
+                fontWeight: 600,
+              }}
+            >
+              {value}
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-bebas-neue)",
+                fontSize: 10,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                fontWeight: 700,
+                color: "var(--color-accent-orange)",
+                padding: "2px 7px",
+                borderRadius: 999,
+                backgroundColor: "rgba(255,136,85,0.1)",
+                border: "1px solid rgba(255,136,85,0.5)",
+              }}
+            >
+              Extended
+            </span>
+          </div>
+        </div>
+      ) : (
+        <span
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            fontSize: 14,
+            color: "var(--color-text-primary)",
+            letterSpacing: "-0.01em",
+            fontWeight: 600,
+          }}
+        >
+          {value}
+        </span>
+      )}
     </motion.div>
   );
 }

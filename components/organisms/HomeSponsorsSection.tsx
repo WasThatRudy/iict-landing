@@ -168,6 +168,9 @@ export default function HomeSponsorsSection() {
                           target={s.href ? "_blank" : undefined}
                           rel={s.href ? "noopener noreferrer" : undefined}
                           className="block"
+                          // Clear space around the logo (~"n" height, per NVIDIA and
+                          // most major-brand logo-usage guidelines). Scales with tier.
+                          style={{ padding: `${Math.round(TIER_HEIGHT[tier] * 0.45)}px` }}
                           whileHover={{ scale: 1.03 }}
                           transition={{ duration: 0.25, ease: "easeOut" }}
                         >

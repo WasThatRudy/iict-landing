@@ -27,9 +27,9 @@ const SPONSORS: SponsorLogo[] = [
 ];
 
 const TIER_HEIGHT: Record<SponsorLogo["tier"], number> = {
-  platinum: 60,
-  gold: 44,
-  silver: 36,
+  platinum: 104,
+  gold: 72,
+  silver: 56,
 };
 
 const FADE_UP = {

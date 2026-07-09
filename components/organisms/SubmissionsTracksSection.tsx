@@ -313,31 +313,24 @@ function TrackCard({ kicker, title, items, href }: TrackCardProps) {
         ))}
       </ul>
 
-      <motion.a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+      {/* Submissions are closed — track submit link retired; the href prop is kept for typing but unused. */}
+      <span
         className="inline-flex items-center gap-2 self-start mt-1"
         style={{
           fontFamily: "var(--font-geist-mono)",
           fontSize: 13,
-          color: "#ff6699",
+          color: "rgba(255,255,255,0.5)",
           letterSpacing: "-0.01em",
           fontWeight: 600,
         }}
-        whileHover={{ x: 2 }}
-        transition={{ duration: 0.18 }}
+        aria-label={`Submissions closed for this track. Originally accepted via ${href}.`}
       >
-        <span>Submit this track</span>
-        <motion.span
-          aria-hidden
-          style={{ display: "inline-block" }}
-          animate={{ x: [0, 4, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          →
-        </motion.span>
-      </motion.a>
+        <span
+          className="rounded-full"
+          style={{ width: 6, height: 6, backgroundColor: "rgba(255,255,255,0.35)" }}
+        />
+        <span>Submissions closed</span>
+      </span>
     </motion.article>
   );
 }

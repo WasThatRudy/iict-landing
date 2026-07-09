@@ -140,47 +140,47 @@ const HeroSection = forwardRef<HeroSectionHandle, HeroSectionProps>(function Her
 
             {/* CTAs */}
             <div className="flex flex-col items-start gap-3">
-              {/* Primary CTA: CFP Open → /submissions */}
+              {/* Primary CTA: CFP is now closed — link to /submissions for CFP details + notification date */}
               <motion.a
                 href="/submissions"
-                aria-label="CFP open — submit your paper"
+                aria-label="Submissions closed — see call for papers"
                 className="flex items-center justify-center overflow-hidden rounded-full focus:outline-none"
                 style={{
-                  backgroundColor: "var(--color-primary)",
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.25)",
                   height: 42,
                   width: 290,
                   paddingLeft: 14,
                   paddingRight: 16,
-                  boxShadow: "0 0 20px rgba(78,3,255,0.45)",
                 }}
-                whileHover={{ boxShadow: "0 0 32px rgba(78,3,255,0.85)", scale: 1.03 }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.09)", borderColor: "rgba(255,255,255,0.4)", scale: 1.02 }}
                 transition={{ duration: 0.15 }}
               >
                 <span
-                  className="text-white"
                   style={{
                     fontFamily: "var(--font-bebas-neue)",
                     fontSize: 14,
                     letterSpacing: "0.18em",
+                    color: "rgba(255,255,255,0.85)",
                     paddingRight: 10,
-                    borderRight: "1px solid rgba(255,255,255,0.28)",
+                    borderRight: "1px solid rgba(255,255,255,0.22)",
                   }}
                 >
-                  CFP OPEN
+                  CFP CLOSED
                 </span>
                 <span
-                  className="text-white"
                   style={{
                     fontFamily: "var(--font-geist-mono)",
                     fontWeight: 500,
                     fontSize: 13,
+                    color: "rgba(255,255,255,0.7)",
                     paddingLeft: 10,
                   }}
                 >
-                  Submit Your Paper
+                  View details
                 </span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ marginLeft: 10 }}>
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="rgba(255,255,255,0.7)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </motion.a>
 

@@ -22,7 +22,7 @@ const VIEWPORT = { once: true, margin: "-80px" };
 type Role = "done" | "next" | "future";
 
 export default function HomeImportantDatesSection() {
-  const today = new Date(2026, 5, 30); // 2026-06-30; pinned to keep status deterministic per build
+  const today = new Date(2026, 6, 9); // 2026-07-09; pinned. Deadline (8 Jul) now past → shows "Closed".
 
   // The "next" item is the first one that hasn't passed yet.
   const nextIndex = IMPORTANT_DATES.findIndex(

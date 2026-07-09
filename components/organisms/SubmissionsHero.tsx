@@ -128,36 +128,20 @@ export default function SubmissionsHero({ easyChairUrl }: SubmissionsHeroProps) 
         >
           <StatusPill />
 
-          <motion.a
-            href={easyChairUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 self-start"
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 self-start"
             style={{
-              background:
-                "linear-gradient(95deg, #ff2d8e 0%, #ff5c4d 25%, #ff9a3c 50%, #ffc14a 75%, #ff2d8e 100%)",
-              backgroundSize: "200% auto",
-              color: "#fff",
+              backgroundColor: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.14)",
               fontFamily: "var(--font-geist-mono)",
-              fontWeight: 600,
               fontSize: 14,
-              letterSpacing: "0.02em",
+              color: "rgba(255,255,255,0.78)",
+              letterSpacing: "0.01em",
             }}
-            animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            whileHover={{ scale: 1.03, boxShadow: "0 0 28px rgba(255,90,77,0.5)" }}
-            whileTap={{ scale: 0.97 }}
           >
-            <span>Submit on EasyChair</span>
-            <motion.span
-              aria-hidden
-              style={{ display: "inline-block" }}
-              animate={{ x: [0, 4, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              →
-            </motion.span>
-          </motion.a>
+            <span>Notifications by</span>
+            <span style={{ color: "var(--color-text-primary)", fontWeight: 600 }}>10 Aug 2026</span>
+          </div>
         </motion.div>
 
         <motion.div
@@ -181,40 +165,30 @@ export default function SubmissionsHero({ easyChairUrl }: SubmissionsHeroProps) 
 
 function StatusPill() {
   return (
-    <motion.span
+    <span
       className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 self-start"
       style={{
-        backgroundColor: "rgba(34,197,94,0.12)",
-        border: "1px solid rgba(34,197,94,0.4)",
+        backgroundColor: "rgba(255,255,255,0.05)",
+        border: "1px solid rgba(255,255,255,0.18)",
       }}
-      animate={{
-        boxShadow: [
-          "0 0 0px rgba(34,197,94,0)",
-          "0 0 18px rgba(34,197,94,0.55)",
-          "0 0 0px rgba(34,197,94,0)",
-        ],
-      }}
-      transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
     >
-      <motion.span
+      <span
         className="rounded-full"
-        style={{ width: 8, height: 8, backgroundColor: "#22c55e" }}
-        animate={{ opacity: [1, 0.5, 1] }}
-        transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+        style={{ width: 8, height: 8, backgroundColor: "rgba(255,255,255,0.5)" }}
       />
       <span
         style={{
           fontFamily: "var(--font-geist-mono)",
           fontSize: 14,
-          color: "#22c55e",
+          color: "rgba(255,255,255,0.85)",
           letterSpacing: "0.08em",
           textTransform: "uppercase",
           fontWeight: 600,
         }}
       >
-        Submissions Open
+        Submissions Closed
       </span>
-    </motion.span>
+    </span>
   );
 }
 

@@ -79,6 +79,14 @@ const STEERING_COMMITTEE: CommitteeMember[] = [
     position: "(SC Member)",
     link: "https://www.cse.iitb.ac.in/~uday/",
   },
+  {
+    id: "sc-6",
+    image: "/assets/images/committee/img12_UB.svg",
+    name: "Prof. Uday Bondhugula",
+    institute: "IISc, Bangalore",
+    position: "(SC Member)",
+    link: "https://www.csa.iisc.ac.in/~udayb/",
+  },
 ];
 
 const ORGANIZING_COMMITTEE: CommitteeMember[] = [

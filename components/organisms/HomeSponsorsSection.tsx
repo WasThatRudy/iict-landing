@@ -163,7 +163,7 @@ export default function HomeSponsorsSection() {
                     />
                   </div>
                   <motion.ul
-                    className="flex flex-wrap items-center gap-10 md:gap-14"
+                    className="flex flex-wrap items-center justify-center gap-10 md:gap-14"
                     variants={CONTAINER}
                     initial="hidden"
                     whileInView="show"
@@ -182,7 +182,7 @@ export default function HomeSponsorsSection() {
                           className="block"
                           // Clear space around the logo (~"n" height, per NVIDIA and
                           // most major-brand logo-usage guidelines). Scales with tier.
-                          style={{ padding: `${Math.round(TIER_HEIGHT[tier] * 0.45)}px` }}
+                          style={{ padding: `${Math.round(TIER_HEIGHT[tier] * 0.25)}px` }}
                           whileHover={{ scale: 1.03 }}
                           transition={{ duration: 0.25, ease: "easeOut" }}
                         >

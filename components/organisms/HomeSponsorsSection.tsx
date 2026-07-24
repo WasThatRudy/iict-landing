@@ -7,6 +7,7 @@ interface SponsorLogo {
   src: string;     // path to logo SVG/PNG
   href?: string;
   tier: "platinum" | "gold" | "silver";
+  height?: number; // overrides TIER_HEIGHT to balance optical weight across logos
 }
 
 // Metallic-gradient stops per tier, used for animated shimmer on the label.
@@ -29,6 +30,7 @@ const SPONSORS: SponsorLogo[] = [
     src: "/assets/svgs/logo-google.svg",
     href: "https://www.google.com",
     tier: "platinum",
+    height: 76,
   },
   {
     name: "Quadric",
@@ -191,7 +193,7 @@ export default function HomeSponsorsSection() {
                             src={s.src}
                             alt={s.name}
                             style={{
-                              height: TIER_HEIGHT[tier],
+                              height: s.height ?? TIER_HEIGHT[tier],
                               display: "block",
                             }}
                           />

@@ -16,12 +16,24 @@ const TIER_GRADIENT: Record<SponsorLogo["tier"], string> = {
   silver:   "linear-gradient(95deg, #b8b8c2 0%, #ffffff 25%, #9a9aa4 50%, #ffffff 75%, #b8b8c2 100%)",
 };
 
-// 2026 sponsors. NVIDIA returns as Platinum Sponsor.
+// 2026 sponsors.
 const SPONSORS: SponsorLogo[] = [
   {
     name: "NVIDIA",
     src: "/assets/svgs/logo-nvidia.svg",
     href: "https://www.nvidia.com",
+    tier: "platinum",
+  },
+  {
+    name: "Google",
+    src: "/assets/svgs/logo-google.svg",
+    href: "https://www.google.com",
+    tier: "platinum",
+  },
+  {
+    name: "Quadric",
+    src: "/assets/images/logo-quadric.png",
+    href: "https://quadric.io",
     tier: "platinum",
   },
 ];

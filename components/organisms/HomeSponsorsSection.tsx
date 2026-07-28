@@ -6,7 +6,7 @@ interface SponsorLogo {
   name: string;
   src: string;     // path to logo SVG/PNG
   href?: string;
-  tier: "platinum" | "gold" | "silver";
+  tier: "platinum" | "gold" | "silver" | "bronze";
   height?: number; // overrides TIER_HEIGHT to balance optical weight across logos
 }
 
@@ -15,6 +15,7 @@ const TIER_GRADIENT: Record<SponsorLogo["tier"], string> = {
   platinum: "linear-gradient(95deg, #e9def8 0%, #ffffff 25%, #b59bff 50%, #ffffff 75%, #e9def8 100%)",
   gold:     "linear-gradient(95deg, #d4a44a 0%, #ffe89a 25%, #b88827 50%, #ffe89a 75%, #d4a44a 100%)",
   silver:   "linear-gradient(95deg, #b8b8c2 0%, #ffffff 25%, #9a9aa4 50%, #ffffff 75%, #b8b8c2 100%)",
+  bronze:   "linear-gradient(95deg, #c98a5e 0%, #f0c9a8 25%, #9c5f33 50%, #f0c9a8 75%, #c98a5e 100%)",
 };
 
 // 2026 sponsors.
@@ -26,17 +27,22 @@ const SPONSORS: SponsorLogo[] = [
     tier: "platinum",
   },
   {
-    name: "Google",
-    src: "/assets/svgs/logo-google.svg",
-    href: "https://www.google.com",
-    tier: "platinum",
-    height: 76,
-  },
-  {
     name: "Quadric",
     src: "/assets/images/logo-quadric.png",
     href: "https://quadric.io",
     tier: "platinum",
+  },
+  {
+    name: "Google",
+    src: "/assets/svgs/logo-google.svg",
+    href: "https://www.google.com",
+    tier: "bronze",
+  },
+  {
+    name: "Agrani Labs",
+    src: "/assets/svgs/logo-agrani.svg",
+    href: "https://www.agranilabs.com",
+    tier: "bronze",
   },
 ];
 
@@ -44,6 +50,7 @@ const TIER_HEIGHT: Record<SponsorLogo["tier"], number> = {
   platinum: 104,
   gold: 72,
   silver: 56,
+  bronze: 48,
 };
 
 const FADE_UP = {
@@ -125,7 +132,7 @@ export default function HomeSponsorsSection() {
         {/* Confirmed sponsors — shown in full brand colour */}
         {hasSponsors && (
           <div className="flex flex-col gap-8 mb-12 md:mb-16">
-            {(["platinum", "gold", "silver"] as const).map((tier) => {
+            {(["platinum", "gold", "silver", "bronze"] as const).map((tier) => {
               const inTier = SPONSORS.filter((s) => s.tier === tier);
               if (inTier.length === 0) return null;
               return (

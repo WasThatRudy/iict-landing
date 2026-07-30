@@ -53,6 +53,24 @@ const TIER_HEIGHT: Record<SponsorLogo["tier"], number> = {
   bronze: 48,
 };
 
+// Association partners — not a sponsorship tier. IICT 2025 was ACM-sponsored;
+// rendered in their own row below the tiers, same logo treatment as 2025's hero.
+interface PartnerLogo {
+  name: string;
+  src: string;
+  href: string;
+  height?: number;
+}
+
+const PARTNERS: PartnerLogo[] = [
+  {
+    name: "ACM",
+    src: "/assets/images/logo-acm.png",
+    href: "https://www.acm.org",
+    height: 64,
+  },
+];
+
 const FADE_UP = {
   hidden: { opacity: 0, y: 16 },
   show:   { opacity: 1, y: 0 },
@@ -211,6 +229,67 @@ export default function HomeSponsorsSection() {
                 </div>
               );
             })}
+          </div>
+        )}
+
+        {/* Association partners */}
+        {PARTNERS.length > 0 && (
+          <div className="flex flex-col gap-4 mb-12 md:mb-16">
+            <div className="flex items-center gap-4">
+              <span
+                style={{
+                  fontFamily: "var(--font-bebas-neue)",
+                  fontSize: "clamp(28px, 3.4vw, 44px)",
+                  letterSpacing: "0.24em",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                  color: "var(--color-text-primary)",
+                  lineHeight: 1.05,
+                  paddingBottom: "0.08em",
+                }}
+              >
+                Partners
+              </span>
+              <span
+                aria-hidden="true"
+                style={{
+                  flex: 1,
+                  maxWidth: 160,
+                  height: 2,
+                  backgroundColor: "var(--color-text-secondary)",
+                  opacity: 0.55,
+                  borderRadius: 999,
+                }}
+              />
+            </div>
+            <motion.ul
+              className="flex flex-wrap items-center justify-center gap-10 md:gap-14"
+              variants={CONTAINER}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT}
+            >
+              {PARTNERS.map((p) => (
+                <motion.li key={p.name} variants={FADE_UP} transition={{ duration: 0.4 }}>
+                  <motion.a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                    style={{ padding: `${Math.round((p.height ?? 64) * 0.25)}px` }}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={p.src}
+                      alt={p.name}
+                      style={{ height: p.height ?? 64, display: "block" }}
+                    />
+                  </motion.a>
+                </motion.li>
+              ))}
+            </motion.ul>
           </div>
         )}
 

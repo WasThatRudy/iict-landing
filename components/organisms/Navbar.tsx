@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: "Home",        href: "/#hero",        match: "/",             matchType: "exact"  as const },
   { label: "Committee",   href: "/committee",    match: "/committee",    matchType: "prefix" as const },
   { label: "Submissions", href: "/submissions",  match: "/submissions",  matchType: "prefix" as const },
+  { label: "Register",    href: "/registrations", match: "/registrations", matchType: "prefix" as const },
   { label: "Sponsor",     href: "/sponsorships", match: "/sponsorships", matchType: "prefix" as const },
 ];
 

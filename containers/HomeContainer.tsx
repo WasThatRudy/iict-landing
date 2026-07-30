@@ -7,6 +7,7 @@ import HomeSubNav from "@/components/organisms/HomeSubNav";
 import HeroSection, { HeroSectionHandle } from "@/components/organisms/HeroSection";
 import HomeImportantDatesSection from "@/components/organisms/HomeImportantDatesSection";
 import HomeTracksSection from "@/components/organisms/HomeTracksSection";
+import SegfaultSection from "@/components/organisms/SegfaultSection";
 import HomeKeynotesSection from "@/components/organisms/HomeKeynotesSection";
 import HomeCommitteeSection from "@/components/organisms/HomeCommitteeSection";
 import HomeVenueSection from "@/components/organisms/HomeVenueSection";
@@ -101,6 +102,7 @@ export default function HomeContainer() {
         <HomeSubNav />
         <HomeImportantDatesSection />
         <HomeTracksSection />
+        <SegfaultSection />
         <HomeKeynotesSection />
         <HomeCommitteeSection />
         <HomeVenueSection />

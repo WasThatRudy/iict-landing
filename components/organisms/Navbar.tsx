@@ -99,21 +99,39 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <motion.button
-            onClick={onOpenModal}
-            className="hidden md:block shrink-0 rounded-[4px] px-6 py-2.5 text-white focus:outline-none"
-            style={{
-              fontFamily: "var(--font-bebas-neue)",
-              fontSize: 15,
-              letterSpacing: "0.14em",
-              border: "1px solid rgba(255,255,255,0.2)",
-            }}
-            whileHover={{ borderColor: "rgba(255,255,255,0.7)", scale: 1.03 }}
-            transition={{ duration: 0.15 }}
-          >
-            Get Updates
-          </motion.button>
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <motion.a
+              href="https://segfault.compilertech.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-[4px] px-6 py-2.5 text-white focus:outline-none"
+              style={{
+                fontFamily: "var(--font-bebas-neue)",
+                fontSize: 15,
+                letterSpacing: "0.14em",
+                backgroundColor: "var(--color-primary)",
+              }}
+              whileHover={{ backgroundColor: "var(--color-primary-hover)", scale: 1.03 }}
+              transition={{ duration: 0.15 }}
+            >
+              SegFault
+            </motion.a>
+            <motion.button
+              onClick={onOpenModal}
+              className="rounded-[4px] px-6 py-2.5 text-white focus:outline-none"
+              style={{
+                fontFamily: "var(--font-bebas-neue)",
+                fontSize: 15,
+                letterSpacing: "0.14em",
+                border: "1px solid rgba(255,255,255,0.2)",
+              }}
+              whileHover={{ borderColor: "rgba(255,255,255,0.7)", scale: 1.03 }}
+              transition={{ duration: 0.15 }}
+            >
+              Get Updates
+            </motion.button>
+          </div>
 
           {/* Hamburger — mobile only */}
           <button
@@ -177,14 +195,30 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
               ))}
             </div>
 
-            <button
-              onClick={() => { setMenuOpen(false); onOpenModal(); }}
-              className="mt-8 w-full rounded-lg py-4 text-white"
+            <a
+              href="https://segfault.compilertech.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="mt-8 w-full rounded-lg py-4 text-white text-center"
               style={{
                 fontFamily: "var(--font-bebas-neue)",
                 fontSize: 18,
                 letterSpacing: "0.14em",
                 backgroundColor: "var(--color-primary)",
+              }}
+            >
+              SegFault Hackathon
+            </a>
+
+            <button
+              onClick={() => { setMenuOpen(false); onOpenModal(); }}
+              className="mt-4 w-full rounded-lg py-4 text-white"
+              style={{
+                fontFamily: "var(--font-bebas-neue)",
+                fontSize: 18,
+                letterSpacing: "0.14em",
+                border: "1px solid rgba(255,255,255,0.2)",
               }}
             >
               Get Updates

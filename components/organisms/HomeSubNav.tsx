@@ -12,6 +12,7 @@ interface NavItem {
 const ITEMS: NavItem[] = [
   { label: "Dates",     href: "#dates",     id: "dates" },
   { label: "Tracks",    href: "#tracks",    id: "tracks" },
+  { label: "SegFault",  href: "#segfault",  id: "segfault" },
   { label: "Speakers",  href: "#speakers",  id: "speakers" },
   { label: "Committee", href: "#committee", id: "committee" },
   { label: "Venue",     href: "#venue",     id: "venue" },

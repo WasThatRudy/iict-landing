@@ -36,7 +36,15 @@ const SPONSORS: SponsorLogo[] = [
     name: "Google",
     src: "/assets/svgs/logo-google.svg",
     href: "https://www.google.com",
-    tier: "bronze",
+    tier: "gold",
+    height: 52,
+  },
+  {
+    name: "Qualcomm",
+    src: "/assets/images/logo-qualcomm.png",
+    href: "https://www.qualcomm.com",
+    tier: "silver",
+    height: 46,
   },
   {
     name: "Agrani Labs",
@@ -341,7 +349,7 @@ export default function HomeSponsorsSection() {
                   color: "var(--color-text-primary)",
                 }}
               >
-                Put your brand in front of India&apos;s compiler community. Platinum, Gold &amp; Silver tiers available.
+                Put your brand in front of India&apos;s compiler community. Platinum, Gold, Silver &amp; Bronze tiers available.
               </span>
             </div>
             <span
